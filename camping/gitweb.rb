@@ -107,11 +107,11 @@ module GitWeb::Controllers
   end
   
   class Fetch < R '/git/(\d+)/(.*)'
-    def get repo_id, path
-      @repo = Repository.find repo_id
-      @git = Git.bare(@repo.path)
-      File.read(File.join(@git.repo.path, path))
-    end
+   def get repo_id, path
+     @repo = Repository.find repo_id
+     @git = Git.bare(@repo.path)
+     File.read(File.join(@git.repo.path, path))
+   end
   end
   
   class Commit < R '/commit/(\d+)/(\w+)'
@@ -202,7 +202,7 @@ module GitWeb::Views
   def layout
     html do
       head do
-        title 'test'
+        title 'LookGit :: git Repo viewing done pretty... '
         link :href=>R(Stylesheet), :rel=>'stylesheet', :type=>'text/css'
         script '', :type => "text/javascript", :language => "JavaScript", :src => R(JsHighlight)
       end
@@ -232,7 +232,21 @@ module GitWeb::Views
 
   # git repo views
   
+  def index
+    @repos.each do | repo |
+      h1 repo.name
+      a 'remove', :href => R(RemoveRepo, repo.id)
+      span.space ' '
+      a repo.path, :href => R(View, repo.id)
+    end
+    br
+    br
+    a 'add new repo', :href => R(Add)
+  end
+   
   def view
+    
+    
     h1 @repo.name
     h2 @repo.path
 
@@ -241,14 +255,15 @@ module GitWeb::Views
     gtags.each { |tag| @tags[tag.sha] ||= []; @tags[tag.sha] << tag.name }
     
     url = 'http:' + URL(Fetch, @repo.id, '').to_s
-
+    
     h3 'info'
     table.info do
       tr { td 'owner: '; td @git.config('user.name') }
       tr { td 'email: '; td @git.config('user.email') }
-      tr { td 'url: '; td { a url, :href => url } }
+     # tr { td 'url: '; td { a url, :href => url } }
+     #The above line is for HTTP repo cloning...
     end
-    
+    br
     h3 'shortlog'
     table.shortlog do
       @git.log.each do |log|
@@ -263,16 +278,17 @@ module GitWeb::Views
               span.tag { code t }
             end if @tags[log.sha]
           end
-          if log.sha == nil then log.sha = 'HEAD'
-          
-          if log.parent.sha == nil then log.parent.sha = 'HEAD'
-          
           td { a 'commit', :href => R(Commit, @repo, log.sha) }
-          td { a 'commit-diff', :href => R(Diff, @repo, log.sha, log.parent.sha) }
-          td { a 'tree', :href => R(Tree, @repo, log.gtree.sha) }
-          td { a 'archive', :href => R(Archive, @repo, log.gtree.sha) }
-        end
-        end
+           
+          if log.parent == nil
+            td {''}
+            td {''}
+            td {''}
+          else
+            td { a 'commit-diff', :href => R(Diff, @repo, log.sha, log.parent.sha) }
+            td { a 'tree', :href => R(Tree, @repo, log.gtree.sha) }
+            td { a 'archive', :href => R(Archive, @repo, log.gtree.sha) }
+          end
         end
       end
     end
@@ -406,17 +422,7 @@ module GitWeb::Views
     end
   end
   
-  def index
-    @repos.each do | repo |
-      h1 repo.name
-      a 'remove', :href => R(RemoveRepo, repo.id)
-      span.space ' '
-      a repo.path, :href => R(View, repo.id)
-    end
-    br
-    br
-    a 'add new repo', :href => R(Add)
-  end
+
   
   # convenience functions
   
