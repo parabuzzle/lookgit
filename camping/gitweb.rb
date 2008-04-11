@@ -263,10 +263,16 @@ module GitWeb::Views
               span.tag { code t }
             end if @tags[log.sha]
           end
+          if log.sha == nil then log.sha = 'HEAD'
+          
+          if log.parent.sha == nil then log.parent.sha = 'HEAD'
+          
           td { a 'commit', :href => R(Commit, @repo, log.sha) }
           td { a 'commit-diff', :href => R(Diff, @repo, log.sha, log.parent.sha) }
           td { a 'tree', :href => R(Tree, @repo, log.gtree.sha) }
           td { a 'archive', :href => R(Archive, @repo, log.gtree.sha) }
+        end
+        end
         end
       end
     end
