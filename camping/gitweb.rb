@@ -21,7 +21,6 @@ require 'lib/git'
 #   - add user model (add/remove repos)
 #   - implement http-push for authenticated users 
 #
-# author : scott chacon
 #
 
 Camping.goes :GitWeb
@@ -65,6 +64,12 @@ module GitWeb::Controllers
     end
   end
   
+  class Admin < R '/admin'
+    def get
+      @repos = Repository.find :all
+      render :admin
+    end
+  end
   
   class Index < R '/'
     def get
@@ -96,7 +101,6 @@ module GitWeb::Controllers
       render :index
     end
   end
-  
   
   class View < R '/view/(\d+)'
     def get repo_id
@@ -235,15 +239,24 @@ module GitWeb::Views
   def index
     @repos.each do | repo |
       h1 repo.name
+      a 'View', :href => R(View, repo.id)
+      br''
+    end
+    br
+  end
+  
+  def admin
+    @repos.each do | repo |
+      h1 repo.name
       a 'remove', :href => R(RemoveRepo, repo.id)
       span.space ' '
       a repo.path, :href => R(View, repo.id)
+      br''
     end
-    br
     br
     a 'add new repo', :href => R(Add)
   end
-   
+  
   def view
     
     
