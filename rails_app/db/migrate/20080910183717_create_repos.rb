@@ -8,6 +8,7 @@ class CreateRepos < ActiveRecord::Migration
       t.column :requires_lead, :boolean, :default => 0
       t.column :requires_admin, :boolean, :default => 0
       t.column :requires_super_admin, :boolean, :default => 0
+      t.column :is_public, :boolean, :default => 1
       t.timestamps
     end
   end
