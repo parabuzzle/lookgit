@@ -1,6 +1,6 @@
-class RepoController < ApplicationController
+class UserController < ApplicationController
   include ApplicationHelper
-  before_filter :protect, :only => [:edit]
+  before_filter :protect, :only => [:index, :edit]
  
   def logout
     User.logout!(session, cookies)

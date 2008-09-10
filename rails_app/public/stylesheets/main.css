@@ -23,7 +23,7 @@ a:visit {
 }
  
 a:hover {
-  color: white;
+  color: #ff0000;
   text-decoration: underline;
 }
  
@@ -58,12 +58,34 @@ a:hover {
   min-height: 400px;
 }
 
+#nav {
+	font-size: 14px;
+	padding: 4px;
+}
+
+#loginform {
+	text-align: center;
+}
+
+#footnav {
+  text-align: center;
+  font-size: 14px;
+  color: #eee;
+  padding-top: 10px;
+}
+
 #footer {
   text-align: center;
   font-size: 14px;
   color: #eee;
-  padding: 25px;
+  padding: 15px;
   height: 45px;
+}
+
+#footer a, #footer a.visited, #footnav a, #footnav a.visited {
+  text-align: center;
+  font-size: 14px;
+  color: #eee;
 }
 
  
@@ -119,6 +141,44 @@ fieldset.debug_info {
 }
 
 /* fieldset styles */
+
+.fieldWithErrors {
+  margin: 2px;
+  padding: 2px;
+  background-color: red;
+  display: table;
+}
+ 
+#errorExplanation {
+  border: 2px solid red;;
+  width: 600px;
+  margin: auto;
+  padding: 7px;
+  padding-bottom: 12px;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+}
+ 
+#errorExplanation h2 {
+  text-align: left;
+  font-weight: bold;
+  padding: 5px 5px 5px 15px;
+  font-size: 12pt;
+  margin: -7px;
+  background-color: #c00;
+  color: #fff;
+}
+ 
+#errorExplanation p {
+  color: #333;
+  margin-bottom: 0;
+  padding: 5px;
+}
+ 
+#errorExplanation ul li {
+  font-size: 11pt;
+  list-style: square;
+}
  
 fieldset {
   background-color: black;
@@ -140,7 +200,11 @@ label{
   padding-bottom: .5em;
 }
 .submit {
-  margin-left: 15em;
+  font-size: 18px;
+  background: #444;
+  border:solid 1px #000;
+  color: #ffff00;
+  padding: 10px;
 }
  
 /*Hack for IE fieldset thing */

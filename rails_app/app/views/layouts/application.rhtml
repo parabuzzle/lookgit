@@ -18,13 +18,23 @@
 			<div id="tagline"><%=SITE_PROPS['tagline']%></div>
 		<%end%>
 		<div id="main">
-	
+			<div id="nav">
+				<%=nav_link('Home', 'site')%> | 
+				<%=nav_link('Repos', 'repo')%> | 
+				<%=nav_link('Login', 'user', 'login')%>
+			</div>
 	
           <%= @content_for_layout %>
 
   		</div>
+
+		<div id="footnav">
+			Help | Privacy | Terms
+		</div>
+
 		<div id="footer"><%=SITE_PROPS['copyright']%><br/>
-			Powered by LookGit
+			<!-- it would be really nice if you left this link in -->
+			Powered by <a href="http://www.mikeheijmans.com/lookgit" target="blank">LookGit<a/>
 		</div>
     </div>
     

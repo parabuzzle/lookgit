@@ -10,6 +10,10 @@ RAILS_GEM_VERSION = '2.1.0' unless defined? RAILS_GEM_VERSION
 # Bootstrap the Rails environment, frameworks, and default configuration
 require File.join(File.dirname(__FILE__), 'boot')
 
+#require libraries - Probably a better way to do this...
+require 'digest/sha1'
+require 'yaml'
+
 #Initialize GripeFest Specific configurations
 SITE_PROPS = YAML::load(File.open("#{RAILS_ROOT}/config/siteprops.yml"))
 
