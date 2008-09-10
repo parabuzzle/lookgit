@@ -1,0 +1,2 @@
+class RepoController < ApplicationController
+end
