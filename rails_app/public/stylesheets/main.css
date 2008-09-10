@@ -1,0 +1,160 @@
+/* Global CSS */
+ 
+body {
+  margin: 0;
+  margin-top: 0;
+  text-align: center;
+  font-family: Helvetica, Arial, sans-serif;
+  /* background: #ffffff url(../images/header.png) repeat-x; */
+  background: #608341;
+  color: #333;
+  /* height: 100%; */
+  margin-bottom:10px;
+}
+ 
+a {
+  text-decoration: none;
+  color: maroon;
+}
+ 
+a:visit {
+  text-decoration: none;
+  color: maroon;
+}
+ 
+a:hover {
+  color: white;
+  text-decoration: underline;
+}
+ 
+ 
+#content {
+  width: 900px;
+  text-align: left;
+  margin: auto;
+  color: #333;
+  font-weight: bold;
+  font-size: 25px;
+  /* overflow: hidden; not sure we need this -- it messed up #anchor links */
+}
+
+#header {
+	padding-top: 25px;
+	color: #ffff00;
+	font-size: 30px;
+}
+
+#tagline {
+	font-size: 14px;
+	color: #fff;
+}
+
+#main {
+  /* background-color: red; reference for area tests */
+  border: solid 2px #333333;
+  margin-top: 25px;
+  background-color:#fff;
+  _height: 400px; /* IE height hack */
+  min-height: 400px;
+}
+
+#footer {
+  text-align: center;
+  font-size: 14px;
+  color: #eee;
+  padding: 25px;
+  height: 45px;
+}
+
+ 
+/* Flash Notice */
+#notice {
+  border: 1px solid maroon;
+  padding: 1em;
+  margin: 1em;
+  color: maroon;
+  font-size: 12px;
+  margin-bottom: 2em;
+  background-color: #c3e2f9;
+  font: bold sans-serif;
+}
+#error {
+  border: 1px solid maroon;
+  padding: 1em;
+  margin: 1em;
+  color: maroon;
+  font-size: 12px;
+  margin-bottom: 2em;
+  background-color: #c3e2f9;
+  font: bold sans-serif;
+}
+ 
+
+
+/* Style that debug feces */
+#debug {
+  margin: 1em;
+  margin-left: auto;
+}
+ 
+#debug a, #debug a.visted {
+  text-decoration: none;
+  color: #fff;
+}
+ 
+fieldset.debug_info {
+  text-align: left;
+  margin: 1em;
+  background: #fff;
+}
+ 
+.debug_dump {
+  text-align: left;
+  /* border-top: 1px dashed black; */
+  background: #eee;
+  color: #000;
+  margin: 0;
+  padding: 0.5em;
+  font-weight: bold;
+}
+
+/* fieldset styles */
+ 
+fieldset {
+  background-color: black;
+}
+legend {
+  color: #fff;
+  background: #000;
+  padding: .4em 1em;
+}
+label{
+  width: 10em;
+  float: left;
+  text-align: right;
+  margin-right: 0.2em;
+  display: block;
+}
+.form_row {
+  white-space: nowrap;
+  padding-bottom: .5em;
+}
+.submit {
+  margin-left: 15em;
+}
+ 
+/*Hack for IE fieldset thing */
+html fieldset {
+  position: relative;
+}
+html legend {
+  position: absolute;
+  top: -1em;
+  left: .5em;
+}
+html fieldset {
+  position: relative;
+  margin-top: 1em;
+  padding-top: 2em;
+  padding-bottom: 2em;
+}
