@@ -1,0 +1,6 @@
+== 0.8.0 / 2008-04-24
+  * Lots of fixes and additions
+
+== 0.7.0 / 2008-01-07
+  * First public release!
+
