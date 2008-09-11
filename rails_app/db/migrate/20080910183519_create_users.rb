@@ -3,6 +3,7 @@ class CreateUsers < ActiveRecord::Migration
     create_table :users do |t|
       t.column :username, :string, :null => false
       t.column :password, :string, :null => false
+      t.column :password_confirmation, :string, :null => false
       t.column :realname, :string
       t.column :email, :string, :null => false
       t.column :is_super_admin, :boolean, :default => 0
