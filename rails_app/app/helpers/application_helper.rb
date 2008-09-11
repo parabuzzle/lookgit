@@ -13,6 +13,10 @@ module ApplicationHelper
     def user?
       @user = User.find(session[:user_id])
     end
+    
+    def super_admin?
+      user?.is_super_admin
+    end
 
     # Return a link for use in layout navigation
     def nav_link(text, controller, action="index", rel=false)

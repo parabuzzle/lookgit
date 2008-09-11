@@ -18,11 +18,22 @@
   <body>
 	
 	<div id="content">
-		<div id="header"><%=SITE_PROPS['sitename']%></div>
+		<% if SITE_PROPS['logourl'] != nil %>
+			<div id="header"><img src="<%=SITE_PROPS["logourl"]%>" alt="<%=SITE_PROPS["sitename"]%>" border="0px"/></div>
+		<%else%>
+			<div id="header"><%=SITE_PROPS["sitename"]%></div>
+		<%end%>
 		<%if SITE_PROPS['tagline'] != nil%>
 			<div id="tagline"><%=SITE_PROPS['tagline']%></div>
 		<%end%>
 		<div id="main">
+			<%if logged_in?%>
+				<% if super_admin?%>
+				<div id="rightnav">
+					You are a freaking super admin!
+				</div>
+				<%end%>
+			<%end%>
 			<div id="nav">
 				<% if logged_in?%>
 				<% name =  if user?.realname == nil || '' then @user.username else @user.realname end%>

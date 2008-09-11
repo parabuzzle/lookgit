@@ -1,0 +1,48 @@
+.head {
+	border-bottom: solid;
+}
+
+#leftcol {
+	float:left;
+	width: 49%;
+}
+
+#rightcol {
+	float:right;
+	width: 49%;
+}
+
+#recent {
+	padding: 5px;
+}
+
+.recent {
+	font-size: 16px;
+	padding: 3px;
+	padding-left: 5px;
+}
+
+#yrepo {
+	padding: 5px;
+}
+
+.yrepo {
+	font-size: 16px;
+	padding: 3px;
+	padding-left: 5px;
+}
+
+#watched {
+	padding: 5px;
+}
+
+.watched {
+	font-size: 16px;
+	padding: 3px;
+	padding-left: 5px;
+}
+
+#pad5 {
+	padding: 5px;
+}
+

@@ -1,8 +1,10 @@
 class UserController < ApplicationController
   include ApplicationHelper
   before_filter :protect, :only => [:index, :edit]
+
   
   def index
+    @additional_styles = 'user'
     @title = "#{SITE_PROPS['sitename']} :: User Dashboard"
   end
  

@@ -39,20 +39,22 @@ a:hover {
 }
 
 #header {
-	padding-top: 25px;
+	padding-top: 15px;
 	color: #ffff00;
-	font-size: 30px;
+	font-size: 50px;
+	height: 70px;
 }
 
 #tagline {
 	font-size: 14px;
 	color: #fff;
+	padding-left: 20px;
 }
 
 #main {
   /* background-color: red; reference for area tests */
   border: solid 2px #333333;
-  margin-top: 25px;
+  margin-top: 10px;
   background-color:#fff;
   _height: 600px; /* IE height hack */
   min-height: 600px;
@@ -67,6 +69,12 @@ a:hover {
 	padding: 4px;
 }
 
+#rightnav {
+	font-size: 14px;
+	padding:4px;
+	float: right;
+}
+
 #helloblock {
 	color: #333;
 	font-size: 12px;
@@ -77,6 +85,10 @@ a:hover {
 #loginform {
 	text-align: center;
 	padding: 25px;
+}
+
+.divide {
+	padding: 0px;
 }
 
 #footnav {

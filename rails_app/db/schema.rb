@@ -21,11 +21,12 @@ ActiveRecord::Schema.define(:version => 20080910191428) do
     t.string   "name",                                    :null => false
     t.string   "loc",                                     :null => false
     t.integer  "creator_id",                              :null => false
-    t.integer  "owner_id",                                :null => false
+    t.integer  "owner_id"
+    t.string   "desc"
     t.boolean  "requires_lead",        :default => false
     t.boolean  "requires_admin",       :default => false
     t.boolean  "requires_super_admin", :default => false
-    t.boolean  "is_public",            :default => true
+    t.boolean  "is_private",           :default => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
