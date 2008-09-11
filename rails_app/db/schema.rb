@@ -25,18 +25,20 @@ ActiveRecord::Schema.define(:version => 20080910191428) do
     t.boolean  "requires_lead",        :default => false
     t.boolean  "requires_admin",       :default => false
     t.boolean  "requires_super_admin", :default => false
+    t.boolean  "is_public",            :default => true
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "users", :force => true do |t|
-    t.string   "username",                          :null => false
-    t.string   "password",                          :null => false
+    t.string   "username",                                 :null => false
+    t.string   "password",                                 :null => false
+    t.string   "password_confirmation",                    :null => false
     t.string   "realname"
-    t.string   "email",                             :null => false
-    t.boolean  "is_super_admin", :default => false
-    t.boolean  "is_admin",       :default => false
-    t.boolean  "is_lead",        :default => false
+    t.string   "email",                                    :null => false
+    t.boolean  "is_super_admin",        :default => false
+    t.boolean  "is_admin",              :default => false
+    t.boolean  "is_lead",               :default => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
