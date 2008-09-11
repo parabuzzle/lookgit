@@ -1,6 +1,6 @@
-class CreateRepos < ActiveRecord::Migration
+class CreateRepodbs < ActiveRecord::Migration
   def self.up
-    create_table :repos do |t|
+    create_table :repodbs do |t|
       t.column :name, :string, :null => false
       t.column :loc, :string, :null => false
       t.column :creator_id, :int, :null => false
@@ -15,6 +15,6 @@ class CreateRepos < ActiveRecord::Migration
   end
 
   def self.down
-    drop_table :repos
+    drop_table :repodbs
   end
 end

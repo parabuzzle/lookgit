@@ -5,7 +5,7 @@ class RepoController < ApplicationController
   def index
     @additional_styles = 'repo'
     @title = "#{SITE_PROPS['sitename']} :: Public Repositories"
-    @repos = Repo.find :all
+    @repos = Repodb.find :all
   end
   
   def add
@@ -13,7 +13,7 @@ class RepoController < ApplicationController
     @title = "#{SITE_PROPS['sitename']} :: Add Repository"
     
     if request.post?
-      @repo = Repo.new(params[:repo])
+      @repo = Repodb.new(params[:repo])
       @repo[:loc] = "missing right now"
       @repo[:creator_id] = 1
       @repo[:owner_id] = 1

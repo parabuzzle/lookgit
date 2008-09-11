@@ -1,4 +1,5 @@
-class Repo < ActiveRecord::Base
+class Repodb < ActiveRecord::Base
+  
   has_and_belongs_to_many :users
   has_many :keys, :through => :users
   
@@ -18,6 +19,7 @@ class Repo < ActiveRecord::Base
                           :with => /^[A-Z0-9_]*$/i,
                           :message => "must contain only letters, " + "numbers, and underscores."
 
+  
   
   
 end

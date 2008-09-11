@@ -1,4 +1,4 @@
 class Key < ActiveRecord::Base
   belongs_to :user
-  belongs_to :repos
+  belongs_to :repodbs
 end
