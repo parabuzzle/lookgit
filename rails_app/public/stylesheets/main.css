@@ -65,6 +65,7 @@ a:hover {
 
 #loginform {
 	text-align: center;
+	padding: 25px;
 }
 
 #footnav {
@@ -94,6 +95,7 @@ a:hover {
   border: 1px solid maroon;
   padding: 1em;
   margin: 1em;
+  text-align: center;
   color: maroon;
   font-size: 12px;
   margin-bottom: 2em;
@@ -104,10 +106,11 @@ a:hover {
   border: 1px solid maroon;
   padding: 1em;
   margin: 1em;
-  color: maroon;
+  text-align: center;
+  color: #fff;
   font-size: 12px;
   margin-bottom: 2em;
-  background-color: #c3e2f9;
+  background-color: #ff0000;
   font: bold sans-serif;
 }
  
@@ -205,6 +208,7 @@ label{
   border:solid 1px #000;
   color: #ffff00;
   padding: 10px;
+  width: 100px;
 }
  
 /*Hack for IE fieldset thing */

@@ -19,10 +19,24 @@
 		<%end%>
 		<div id="main">
 			<div id="nav">
+				<% if logged_in?%>
+				<%=nav_link('Home', 'user')%> | 
+				<%=nav_link('Repos', 'repo')%> | 
+				<%=nav_link('Logout', 'user', 'logout')%>
+				<%else%>
 				<%=nav_link('Home', 'site')%> | 
 				<%=nav_link('Repos', 'repo')%> | 
 				<%=nav_link('Login', 'user', 'login')%>
+				<%end%>
 			</div>
+			
+			<% if flash[:notice] -%>
+			   <div id="notice"><%= flash[:notice] %></div>
+			<% end %>
+			<% if flash[:error] -%>
+			    <div id="error"><%= flash[:error] %></div>
+			<% end %>
+			
 	
           <%= @content_for_layout %>
 
