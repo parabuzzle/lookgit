@@ -1,4 +1,6 @@
 class RepoController < ApplicationController
+  include ApplicationHelper
+  before_filter :protect, :only => [:add]
   
   def index
     @additional_styles = 'repo'
@@ -23,6 +25,16 @@ class RepoController < ApplicationController
       end
     end
     
+  end
+
+  #protect a page from unauth access
+  def protect
+    unless logged_in?
+      session[:protected_page] = request.request_uri
+      flash[:notice] = "i can't do that dave... you must be logged in first"
+      redirect_to :controller => "user", :action => "login"
+      return false
+    end
   end
 
 end
