@@ -1,6 +1,10 @@
 class UserController < ApplicationController
   include ApplicationHelper
   before_filter :protect, :only => [:index, :edit]
+  
+  def index
+    @title = "#{SITE_PROPS['sitename']} :: User Dashboard"
+  end
  
   def logout
     User.logout!(session, cookies)
@@ -41,10 +45,6 @@ class UserController < ApplicationController
         flash[:notice] = "Invalid username/password combination"
       end
     end
-  end
- 
-  def index
-    @title = "#{SITE_PROPS['sitename']} :: User Hub"
   end
   
   #Edit user info

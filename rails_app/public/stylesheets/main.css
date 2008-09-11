@@ -54,13 +54,24 @@ a:hover {
   border: solid 2px #333333;
   margin-top: 25px;
   background-color:#fff;
-  _height: 400px; /* IE height hack */
-  min-height: 400px;
+  _height: 600px; /* IE height hack */
+  min-height: 600px;
+}
+
+#inner {
+	padding: 10px;
 }
 
 #nav {
 	font-size: 14px;
 	padding: 4px;
+}
+
+#helloblock {
+	color: #333;
+	font-size: 12px;
+	padding-top: 4px;
+	padding-left: 10px;
 }
 
 #loginform {
