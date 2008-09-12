@@ -17,7 +17,7 @@
 		</tr>
 		<tr>
 			<td align="right">Verify Password:</td>
-			<td align="left"><%= form.password_field :password_confirmation, :size => User::PASSWORD_SIZE, :maxlength => User::PASSWORD_MAX_LENGTH %></td>
+			<td align="left"><%= form.password_field :password_confirmation, :size => User::PASSWORD_SIZE, :maxlength => User::PASSWORD_MAX_LENGTH, :value => ''%></td>
 		</tr>
 		<tr>
 			<td colspan="2" align="right"><%= submit_tag "Register!", :class => "submit" %></td>

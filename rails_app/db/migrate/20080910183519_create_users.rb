@@ -9,6 +9,7 @@ class CreateUsers < ActiveRecord::Migration
       t.column :is_super_admin, :boolean, :default => 0
       t.column :is_admin, :boolean, :default => 0
       t.column :is_lead, :boolean, :default => 0
+      t.column :is_deleted, :boolean, :default => 0
       t.timestamps
     end
     execute "INSERT INTO users (username, password, password_confirmation, email, is_super_admin, is_admin, is_lead) VALUES('admin', 'admin', 'admin', 'admin@admin.com', 1, 1, 1)"

@@ -11,19 +11,22 @@
 	
 	<div id="rightcol">
 		<div id="yrepo">
-			<div class="head">Your Repos <%=nav_link('[Add]', 'repo', 'add')%></div>
-			<div class="yrepo">Repo1</div>
-			<div class="divide"><img src="/images/div.jpg"/></div>
-			<div class="yrepo">Repo2</div>
-			<div class="divide"><img src="/images/div.jpg"/></div>
+			<div class="head">Repos You Own <%=nav_link('[Add]', 'repo', 'add')%></div>
+			<% for repo in @myrepos%>
+				<div class="yrepo"><%=repo.name%></div>
+				<div class="yrepodesc"><%=repo.desc%></div>
+				<div class="divide"><img src="/images/div.jpg" alt="---"/></div>
+			<% end %>
 		</div>
     	<div id="pad5"></div>
 		<div id="watched">
-			<div class="head">Watched Repos</div>
-			<div class="watched">Repo3</div>
-			<div class="divide"><img src="/images/div.jpg"/></div>
-			<div class="watched">Repo4</div>
-			<div class="divide"><img src="/images/div.jpg"/></div>
+			<div class="head">Your Watched Repos</div>
+			<% for repo in @watchedrepos%>
+				<% r = repo_lookup_by_rid(repo.repo_id)%>
+				<div class="watched"><%=r.name%></div>
+				<div class="watcheddesc"><%=r.desc%></div>
+				<div class="divide"><img src="/images/div.jpg"/></div>
+			<%end%>
 		</div>
 	</div>
 	

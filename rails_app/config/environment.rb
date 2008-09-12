@@ -32,7 +32,7 @@ Rails::Initializer.run do |config|
   # config.gem "hpricot", :version => '0.6', :source => "http://code.whytheluckystiff.net"
   # config.gem "aws-s3", :lib => "aws/s3"
    config.gem "open4"
-   config.gem "mime/types"
+   #config.gem "mime/types"
    config.gem "grit"
 
   # Only load the plugins named here, in the order given. By default, all plugins 
@@ -41,7 +41,7 @@ Rails::Initializer.run do |config|
   # config.plugins = [ :exception_notification, :ssl_requirement, :all ]
 
   # Add additional load paths for your own custom dirs
-  config.load_paths += %W( #{RAILS_ROOT}/thirdparty/lib )
+  # config.load_paths += %W( #{RAILS_ROOT}/thirdparty/lib )
 
   # Force all environments to use the same logger level
   # (by default production uses :info, the others :debug)

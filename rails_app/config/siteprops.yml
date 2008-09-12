@@ -8,3 +8,5 @@ tagline: Your friendly git server
 
 #The copyright info for your git repos
 copyright: Copyright &copy; 2008 Your Company
+
+repospath: '/Users/heijmans/repos/'

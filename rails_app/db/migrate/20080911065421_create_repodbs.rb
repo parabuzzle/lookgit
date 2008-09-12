@@ -5,11 +5,13 @@ class CreateRepodbs < ActiveRecord::Migration
       t.column :loc, :string, :null => false
       t.column :creator_id, :int, :null => false
       t.column :owner_id, :int
+      t.column :user_id, :string
       t.column :desc, :string
       t.column :requires_lead, :boolean, :default => 0
       t.column :requires_admin, :boolean, :default => 0
       t.column :requires_super_admin, :boolean, :default => 0
       t.column :is_private, :boolean, :default => 0
+      t.column :is_deleted, :boolean, :default => 0
       t.timestamps
     end
   end

@@ -1,6 +1,7 @@
 class Repodb < ActiveRecord::Base
   
-  has_and_belongs_to_many :users
+  belongs_to :users
+  has_many :users, :through => :watchers
   has_many :keys, :through => :users
   
   NAME_MIN_LENGTH = 4

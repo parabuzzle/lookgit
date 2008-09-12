@@ -1,11 +1,14 @@
 class RepoController < ApplicationController
   include ApplicationHelper
-  before_filter :protect, :only => [:add]
+  include RepoHelper  
+  include Grit
+  before_filter :protect
   
   def index
     @additional_styles = 'repo'
     @title = "#{SITE_PROPS['sitename']} :: Public Repositories"
-    @repos = Repodb.find :all
+    #@repos = Repodb.find :all
+    @repos = Repodb.all
   end
   
   def add
@@ -14,17 +17,34 @@ class RepoController < ApplicationController
     
     if request.post?
       @repo = Repodb.new(params[:repo])
-      @repo[:loc] = "missing right now"
-      @repo[:creator_id] = 1
-      @repo[:owner_id] = 1
+      @repo[:loc] = SITE_PROPS['repospath'] + @repo[:name] + '.git'
+      @repo[:creator_id] = user?.id
+      @repo[:owner_id] = user?.id
       if @repo.save
-        flash[:notice] = "User #{@repo.name} Created!"
-        redirect_to :controller => 'repo', :action => 'show', :id => @repo.id
-      else
-        flash[:error] = "oops"
+        flash[:notice] = "Repository #{@repo.name} Created!"
+        create_new_repo(@repo.loc)
+        repo = Repo.new(@repo.loc)
+        redirect_to :controller => 'user', :action => 'index'
+        #redirect_to :controller => 'repo', :action => 'show', :id => @repo.id
       end
     end
     
+  end
+  
+  def watch
+    if request.post?
+      if watch_a_repo(params[:repo_id])
+        flash[:notice]= "Repository added to your watch list"
+        redirect_to :controller => 'user', :action => 'index'
+      else
+        flash[:error] = "Something Broke"
+      end
+    else
+      flash[:error] = "Can't do that"
+      redirect_to :controller => 'user', :action => 'index'
+    end
+      
+      
   end
 
   #protect a page from unauth access

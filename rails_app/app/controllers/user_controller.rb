@@ -6,6 +6,8 @@ class UserController < ApplicationController
   def index
     @additional_styles = 'user'
     @title = "#{SITE_PROPS['sitename']} :: User Dashboard"
+    @myrepos = repo_lookup_by_uid(user?.id)
+    @watchedrepos = watched_repo_lookup(user?.id)
   end
  
   def logout
@@ -18,11 +20,16 @@ class UserController < ApplicationController
     @title = "#{SITE_PROPS['sitename']} :: Register"
     if param_posted?(:user)
       @user = User.new(params[:user])
-      if @user.save
-        @user.login!(session)
-        flash[:notice] = "User #{@user.username} Created!"
-        redirect_to_forwarding_url
+      if @user[:password] == @user[:password_confirmation]
+        if @user.save
+          @user.login!(session)
+          flash[:notice] = "User #{@user.username} Created!"
+          redirect_to_forwarding_url
+        else
+          @user.clear_password!
+        end
       else
+        @user.errors.add("Passwords don't Match", "")
         @user.clear_password!
       end
     end

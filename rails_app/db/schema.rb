@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20080911065421) do
+ActiveRecord::Schema.define(:version => 20080911185054) do
 
   create_table "keys", :force => true do |t|
     t.string   "pubkey",     :null => false
@@ -22,11 +22,13 @@ ActiveRecord::Schema.define(:version => 20080911065421) do
     t.string   "loc",                                     :null => false
     t.integer  "creator_id",                              :null => false
     t.integer  "owner_id"
+    t.string   "user_id"
     t.string   "desc"
     t.boolean  "requires_lead",        :default => false
     t.boolean  "requires_admin",       :default => false
     t.boolean  "requires_super_admin", :default => false
     t.boolean  "is_private",           :default => false
+    t.boolean  "is_deleted",           :default => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -40,6 +42,14 @@ ActiveRecord::Schema.define(:version => 20080911065421) do
     t.boolean  "is_super_admin",        :default => false
     t.boolean  "is_admin",              :default => false
     t.boolean  "is_lead",               :default => false
+    t.boolean  "is_deleted",            :default => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "watchers", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "repo_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

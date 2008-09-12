@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  has_and_belongs_to_many :repodbs
+  has_many :repodbs
   has_many :keys
 
   attr_accessor :remember_me

@@ -30,6 +30,11 @@
 	font-size: 16px;
 	padding: 3px;
 	padding-left: 5px;
+	padding-top: 6px;
+}
+.yrepodesc {
+	font-size: 12px;
+	padding-left: 10px;
 }
 
 #watched {
@@ -40,6 +45,12 @@
 	font-size: 16px;
 	padding: 3px;
 	padding-left: 5px;
+	padding-top: 6px;
+}
+
+.watcheddesc {
+	font-size: 12px;
+	padding-left: 10px;	
 }
 
 #pad5 {

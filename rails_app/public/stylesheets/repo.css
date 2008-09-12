@@ -1,3 +1,27 @@
 .rhead {
 	border-bottom: solid;
 }
+
+.reponame {
+	font-weight: bold;
+	padding-top: 6px;
+}
+
+.repodesc {
+	font-size: 14px;
+	
+}
+
+.repoowner {
+	font-size: 13px;
+	color: #666;
+	
+}
+
+.rnav {
+	font-size: 12px;
+}
+
+.rdiv {
+	
+}
