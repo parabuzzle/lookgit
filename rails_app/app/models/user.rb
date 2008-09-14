@@ -1,8 +1,13 @@
 class User < ActiveRecord::Base
+  
   has_many :repodbs
   has_many :keys
+  has_many :watchers
+  has_many :members
+  has_many :events
 
   attr_accessor :remember_me
+  attr_accessor :repevents
 
     USERNAME_MIN_LENGTH = 4
     USERNAME_MAX_LENGTH = 20
@@ -30,7 +35,10 @@ class User < ActiveRecord::Base
                             :with => /^[A-Z0-9._%-]+@([A-Z0-9-]+\.)+[A-Z]{2,4}$/i
 
 
-    #log a user in
+
+
+    
+     #log a user in
     def login!(session)
       session[:user_id] = self.id
     end
@@ -44,6 +52,7 @@ class User < ActiveRecord::Base
     #clear the password param
     def clear_password!
       self.password = nil
+      self.password_confirmation = nil
     end
 
     #Remember me stuff
@@ -66,6 +75,13 @@ class User < ActiveRecord::Base
     def remember_me?
       remember_me == "1"
     end
+    def repevents
+  		list = []
+  		repodbs.each do |repo|
+  			list += repo.events
+  		end
+  		list
+  	end
 
     private
 

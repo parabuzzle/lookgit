@@ -9,10 +9,32 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20080911185054) do
+ActiveRecord::Schema.define(:version => 20080914052133) do
+
+  create_table "events", :force => true do |t|
+    t.string   "username"
+    t.integer  "user_id"
+    t.string   "event"
+    t.string   "reponame"
+    t.integer  "repodb_id"
+    t.boolean  "is_private",   :default => false
+    t.boolean  "is_deleted",   :default => false
+    t.boolean  "is_processed", :default => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "keys", :force => true do |t|
     t.string   "pubkey",     :null => false
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "members", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "repodb_id"
+    t.integer  "member_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -21,14 +43,21 @@ ActiveRecord::Schema.define(:version => 20080911185054) do
     t.string   "name",                                    :null => false
     t.string   "loc",                                     :null => false
     t.integer  "creator_id",                              :null => false
-    t.integer  "owner_id"
-    t.string   "user_id"
+    t.integer  "user_id"
     t.string   "desc"
     t.boolean  "requires_lead",        :default => false
     t.boolean  "requires_admin",       :default => false
     t.boolean  "requires_super_admin", :default => false
     t.boolean  "is_private",           :default => false
     t.boolean  "is_deleted",           :default => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "repodbs_watchers", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "repodb_id"
+    t.integer  "watcher_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -49,7 +78,7 @@ ActiveRecord::Schema.define(:version => 20080911185054) do
 
   create_table "watchers", :force => true do |t|
     t.integer  "user_id"
-    t.integer  "repo_id"
+    t.integer  "repodb_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

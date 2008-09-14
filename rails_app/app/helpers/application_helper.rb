@@ -18,25 +18,12 @@ module ApplicationHelper
       @user = User.find(id)
     end
     
-    def repo_lookup_by_uid(uid)
-      @repo = Repodb.find(:all, :conditions => "owner_id = #{uid}")
+    def repo?
+      @repo = Repodb.find(params[:id])
     end
     
-    def repo_lookup_by_rid(rid)
-      @repo = Repodb.find(rid)
-    end
-    
-    def watched_repo_lookup(uid)
-      @watch = Watcher.find(:all, :conditions => "user_id = #{uid}")
-    end
-    
-    def watched?(rid)
-      watch = Watcher.find(:all, :conditions => "repo_id = #{rid} AND user_id = #{user?.id}")
-      if watch != nil || ''
-        return true
-      else
-        return false
-      end
+    def watching_repo?(rid)
+      @watching = Repodb.find(rid).watchers.count(:conditions => "user_id = #{session[:user_id]}")
     end
     
     def super_admin?

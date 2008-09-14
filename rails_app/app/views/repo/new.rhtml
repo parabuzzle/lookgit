@@ -1,0 +1,25 @@
+<div id="loginform">
+	<h2>Add Repo</h2>
+<% form_for :repo do |form| %>
+<%= error_messages_for "repo" %>
+	<table align="center">
+		<tr>
+			<td align="right">Name:</td>
+			<td align="left"><%= form.text_field :name, :size => Repodb::NAME_SIZE, :maxlength => Repodb::NAME_MAX_LENGTH %></td>
+		</tr>
+		<tr>
+			<td align="right">Description:</td>
+			<td align="left"><%= form.text_field :desc, :size => Repodb::NAME_SIZE %></td>
+		</tr>
+		<tr>
+			<td align="right">Private:</td>
+			<td align="left"><%= form.check_box :is_private%></td>
+		</tr>
+		<tr>
+			<td colspan="2" align="right"><%= submit_tag "Add Repo", :class => "submit" %></td>
+		</tr>
+	</table>
+
+<% end %>
+
+</div>

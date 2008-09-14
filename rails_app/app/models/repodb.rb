@@ -1,8 +1,13 @@
 class Repodb < ActiveRecord::Base
   
-  belongs_to :users
-  has_many :users, :through => :watchers
-  has_many :keys, :through => :users
+  belongs_to :user
+  has_many :watchers
+  has_many :members
+  has_many :events
+  
+  named_scope :public?, :conditions => ['is_private = ?', false]
+  
+  
   
   NAME_MIN_LENGTH = 4
   NAME_MAX_LENGTH = 20

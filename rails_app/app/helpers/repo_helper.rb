@@ -10,7 +10,16 @@ module RepoHelper
   end
   
   def watch_a_repo(repo_id)
-     watch = Watcher.new(:repo_id => repo_id, :user_id => user?.id)
+     watch = user?.watchers.new(:repodb_id => repo_id)
+     if watch.save
+       return true
+     else
+       return false
+     end
+  end
+  
+  def unwatch_a_repo(id)
+     watch = Repodb.find(id).watchers.find_by_user_id(session[:user_id]).destroy
      if watch.save
        return true
      else

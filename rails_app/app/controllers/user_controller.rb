@@ -6,8 +6,22 @@ class UserController < ApplicationController
   def index
     @additional_styles = 'user'
     @title = "#{SITE_PROPS['sitename']} :: User Dashboard"
-    @myrepos = repo_lookup_by_uid(user?.id)
-    @watchedrepos = watched_repo_lookup(user?.id)
+    user = user?
+    @myrepos = user.repodbs
+    @watchedrepos = user.watchers
+    @memberrepos = user.members
+    @myevents = user.events
+    @allevents = @myevents + user.repevents
+  end
+  
+  def profile
+    user = User.find(params[:id])
+    if user.realname != nil
+      usersname = user.realname
+    else
+      usersname = user.username
+    end
+    @title = "#{SITE_PROPS['sitename']} :: #{usersname}'s Profile"
   end
  
   def logout
@@ -29,7 +43,7 @@ class UserController < ApplicationController
           @user.clear_password!
         end
       else
-        @user.errors.add("Passwords don't Match", "")
+        @user.errors.add("password_confirmation", "doesn't Match")
         @user.clear_password!
       end
     end

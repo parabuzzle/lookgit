@@ -1,17 +1,19 @@
 <div id="repos">
-	<div class="rhead">All Public Repositories</div>
+	<div class="rhead">All Public Repositories <%= link_to_unless_current '[Add]', { :action => 'new', :controller => 'repo' }, :rel => 'facebox' %></div>
 	
 	<% for repo in @repos%>
 	
 		<div class="reponame"><%= repo.name%></div>
 		<div class="repodesc">Description: <%= repo.desc%></div>
-		<div class="repoowner">Owner: <%= user_lookup(repo.owner_id).username%></div>
+		<div class="repoowner">Owner: <%=link_to user_lookup(repo.user_id).username, :controller => 'user', :action => 'profile', :id => repo.user_id%></div>
 		<div class="rnav">
-			<% if watched?(repo.id) != false%>
-				<%=link_to 'Un-Watch', {:action => "watch", :repo_id => repo.id}, :method => :post %>
+		<% if logged_in?%>
+			<% if watching_repo?(repo.id) != 0 %>
+				<%=link_to 'Un-Watch', {:action => "unwatch", :repo_id => repo.id}, :method => :post %>
 			<%else%>
 				<%=link_to 'Watch', {:action => "watch", :repo_id => repo.id}, :method => :post %>
 			<%end%>
+		<%end%>
 		</div>
 		<div class="rdiv"><img src="/images/div.jpg" alt="---"/></div>
 		
