@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
   has_many :watchers
   has_many :members
   has_many :events
+  has_one :profile
 
   attr_accessor :remember_me
   attr_accessor :repevents

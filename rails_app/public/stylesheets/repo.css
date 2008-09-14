@@ -1,4 +1,5 @@
 .rhead {
+	padding-left: 25px;
 	border-bottom: solid;
 }
 
@@ -24,4 +25,12 @@
 
 .rdiv {
 	
+}
+
+#repos {}
+
+#repolist {
+	/*background:black;*/
+	padding-left: 50px;
+	padding-right: 50px;
 }

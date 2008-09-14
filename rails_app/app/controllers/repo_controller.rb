@@ -2,7 +2,7 @@ class RepoController < ApplicationController
   include ApplicationHelper
   include RepoHelper  
   include Grit
-  #before_filter :protect
+  before_filter :protect, :only =>[:new]
   
   def index
     @additional_styles = 'repo'
@@ -31,8 +31,8 @@ class RepoController < ApplicationController
         flash[:notice] = "Repository #{@repo.name} Created!"
         create_new_repo(@repo.loc)
         repo = Repo.new(@repo.loc)
-        redirect_to :controller => 'user', :action => 'index'
-        #redirect_to :controller => 'repo', :action => 'show', :id => @repo.id
+        #redirect_to :controller => 'user', :action => 'index'
+        redirect_to :controller => 'repo', :action => 'show', :id => @repo.id
       end
     end
     

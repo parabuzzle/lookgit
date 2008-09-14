@@ -2,6 +2,7 @@
 	<div id="leftcol">
 		<div id="recent">
 			<div class="head">Recent Activity For You</div>
+			<%=if @allevents.empty? then "<div class='recent'>There are no events</div>" end%>
 			<% for repo in @allevents %>
 			<div class="recent"><%= repo.event %></div>
 			<div class="divide"><img src="/images/div.jpg"/></div>
@@ -10,6 +11,7 @@
 		<div id="pad5"></div>	
 		<div id="recent">
 			<div class="head">Recent Activity From You</div>
+			<%=if @myevents.empty? then "<div class='recent'>You havn't done anything yet</div>" end%>
 			<% for event in @myevents %>
 			<div class="recent"><%= event.event %></div>
 			<div class="divide"><img src="/images/div.jpg"/></div>
@@ -20,13 +22,15 @@
 	<div id="rightcol">
 		<div id="yrepo">
 			<div class="head">Your Repos <%= link_to_unless_current '[Add]', { :action => 'new', :controller => 'repo' }, :rel => 'facebox' %></div>
+			<%=if @myrepos.empty? then "<div class='recent'>You don't have any repos yet</div>" end%>
+			
 			<% for repo in @myrepos%>
-				<div class="yrepo"><img src="/images/icons/happy.png" alt="you own it"/><%= link_to(repo.name, :controller=>'repo', :action => 'show', :id => repo.id)%></div>
+				<div class="yrepo"><img src="/images/icons/happy.png" alt="you own it"/><%=if repo.is_private then "<img src='/images/icons/private.png' alt='private'/>" end%> <%= link_to(repo.name, :controller=>'repo', :action => 'show', :id => repo.id)%></div>
 				<div class="yrepodesc"><%=repo.desc%></div>
 				<div class="divide"><img src="/images/div.jpg" alt="---"/></div>
 			<% end %>
 			<% for repo in @memberrepos%>
-				<div class="yrepo"><%=repo.repodb.name%></div>
+				<div class="yrepo"><%=if repo.repodb.is_private then "<img src='/images/icons/private.png' alt='private'/>" end%> <%= link_to(repo.repodb.name, :controller=>'repo', :action => 'show', :id => repo.repodb.id)%></div>
 				<div class="yrepodesc"><%=repo.repodb.desc%></div>
 				<div class="yrepodesc">Owner: <%=link_to repo.repodb.user.username, :action=>'profile', :id => repo.repodb.user.id%></div>
 				<div class="divide"><img src="/images/div.jpg" alt="---"/></div>
@@ -35,9 +39,10 @@
     	<div id="pad5"></div>
 		<div id="watched">
 			<div class="head">Your Watched Repos</div>
+			<%=if @watchedrepos.empty? then "<div class='recent'>Your are not watching any repos</div>" end%>
 			<% for repo in @watchedrepos%>
 				
-				<div class="watched"><%= link_to(repo.repodb.name, :controller=>'repo', :action => 'show', :id => repo.repodb.id)%> [<%=link_to 'Un-Watch', {:controller => 'repo', :action => "unwatch", :repo_id => repo.id}, :method => :post %>]</div>
+				<div class="watched"><%= link_to(repo.repodb.name, :controller=>'repo', :action => 'show', :id => repo.repodb.id)%> [<%=link_to 'Un-Watch', {:controller => 'repo', :action => "unwatch", :repo_id => repo.repodb.id}, :method => :post %>]</div>
 				<div class="watcheddesc"><%=repo.repodb.desc%></div>
 				<div class="watcheddesc">Owner: <%=link_to repo.repodb.user.username, :action=>'profile', :id => repo.repodb.user.id%></div>
 				<div class="divide"><img src="/images/div.jpg"/></div>

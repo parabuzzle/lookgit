@@ -1,9 +1,10 @@
 <div id="repos">
-	<div class="rhead">All Public Repositories <%= link_to_unless_current '[Add]', { :action => 'new', :controller => 'repo' }, :rel => 'facebox' %></div>
+	<div class="rhead">All Public Repositories <%= if logged_in? then link_to_unless_current '[Add]', { :action => 'new', :controller => 'repo' }, :rel => 'facebox' else link_to_unless_current '[Add]', { :action => 'new', :controller => 'repo' } end %> </div>
+	<div id="repolist">
 	
 	<% for repo in @repos%>
 	
-		<div class="reponame"><%= repo.name%></div>
+		<div class="reponame"><%= link_to(repo.name, :controller=>'repo', :action => 'show', :id => repo.id)%></div>
 		<div class="repodesc">Description: <%= repo.desc%></div>
 		<div class="repoowner">Owner: <%=link_to user_lookup(repo.user_id).username, :controller => 'user', :action => 'profile', :id => repo.user_id%></div>
 		<div class="rnav">
@@ -19,5 +20,7 @@
 		
 	
 	<%end%>
+	
+	</div>
 	
 </div>

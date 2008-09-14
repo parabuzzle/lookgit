@@ -23,8 +23,9 @@ a:visit {
 }
  
 a:hover {
-  color: #ff0000;
+  color: #00A0FF;
   text-decoration: underline;
+  /*background: #000;*/
 }
  
  
