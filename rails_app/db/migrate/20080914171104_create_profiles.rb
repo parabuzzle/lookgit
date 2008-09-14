@@ -1,6 +1,7 @@
 class CreateProfiles < ActiveRecord::Migration
   def self.up
     create_table :profiles do |t|
+      t.column :user_id, :int
       t.column :about, :text
       t.column :homephone, :string
       t.column :workphone, :string

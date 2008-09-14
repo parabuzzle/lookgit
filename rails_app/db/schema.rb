@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20080914052133) do
+ActiveRecord::Schema.define(:version => 20080914171104) do
 
   create_table "events", :force => true do |t|
     t.string   "username"
@@ -38,6 +38,9 @@ ActiveRecord::Schema.define(:version => 20080914052133) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+# Could not dump table "profiles" because of following StandardError
+#   Unknown type 'scring' for column 'cellphone'
 
   create_table "repodbs", :force => true do |t|
     t.string   "name",                                    :null => false
