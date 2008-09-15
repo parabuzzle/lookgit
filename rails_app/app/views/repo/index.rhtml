@@ -6,7 +6,7 @@
 	
 		<div class="reponame"><%= link_to(repo.name, :controller=>'repo', :action => 'show', :id => repo.id)%></div>
 		<div class="repodesc">Description: <%= repo.desc%></div>
-		<div class="repoowner">Owner: <%=link_to user_lookup(repo.user_id).username, :controller => 'user', :action => 'profile', :username => repo.user.username%></div>
+		<div class="repoowner">Owner: <%=link_to repo.user.username, :controller => 'user', :action => 'profile', :username => repo.user.username%></div>
 		<div class="rnav">
 		<% if logged_in?%>
 			<% if watching_repo?(repo.id) != 0 %>
