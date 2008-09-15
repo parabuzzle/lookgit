@@ -15,7 +15,7 @@ class UserController < ApplicationController
   end
   
   def profile
-    user = User.find(params[:id])
+    user = User.find_by_username(params[:username])
     if user.realname != nil
       usersname = user.realname
     else

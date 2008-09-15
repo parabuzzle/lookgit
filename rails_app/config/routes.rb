@@ -1,7 +1,14 @@
 ActionController::Routing::Routes.draw do |map|
   # The priority is based upon order of creation: first created -> highest priority.
   map.root :controller => "site"
+  map.connect 'repositories', :controller => 'repo', :action => 'index'
+  map.connect 'repo/:id/tree/:sha', :controller => 'repo', :action => 'tree'
   map.resources :repo
+  map.connect ':controller/:action/:id'
+  map.connect ':controller/:action/:id.:format'
+  map.connect 'user', :controller => 'user', :action => 'index'
+  map.connect 'user/:action', :controller => 'user'
+  map.connect 'profile/:username', :controller => 'user', :action => 'profile'
   #map.connect 'user/:id', :controller => 'user', :action => 'show'
   #map.resources :repo
   # Sample of regular route:
@@ -37,8 +44,4 @@ ActionController::Routing::Routes.draw do |map|
   # map.root :controller => "welcome"
 
   # See how all your routes lay out with "rake routes"
-
-  # Install the default routes as the lowest priority.
-  map.connect ':controller/:action/:id'
-  map.connect ':controller/:action/:id.:format'
 end

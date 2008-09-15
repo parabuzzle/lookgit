@@ -86,6 +86,11 @@ a:hover {
 	padding-left: 10px;
 }
 
+#helloblock a {
+	color: #333;
+	font-size: 12px;
+}
+
 #loginform {
 	text-align: center;
 	padding: 25px;

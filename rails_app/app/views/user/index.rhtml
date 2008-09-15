@@ -32,7 +32,7 @@
 			<% for repo in @memberrepos%>
 				<div class="yrepo"><%=if repo.repodb.is_private then "<img src='/images/icons/private.png' alt='private'/>" end%> <%= link_to(repo.repodb.name, :controller=>'repo', :action => 'show', :id => repo.repodb.id)%></div>
 				<div class="yrepodesc"><%=repo.repodb.desc%></div>
-				<div class="yrepodesc">Owner: <%=link_to repo.repodb.user.username, :action=>'profile', :id => repo.repodb.user.id%></div>
+				<div class="yrepodesc">Owner: <%=link_to repo.repodb.user.username, :action=>'profile', :username => repo.repodb.user.username%></div>
 				<div class="divide"><img src="/images/div.jpg" alt="---"/></div>
 			<% end %>
 		</div>
@@ -44,7 +44,7 @@
 				
 				<div class="watched"><%= link_to(repo.repodb.name, :controller=>'repo', :action => 'show', :id => repo.repodb.id)%> [<%=link_to 'Un-Watch', {:controller => 'repo', :action => "unwatch", :repo_id => repo.repodb.id}, :method => :post %>]</div>
 				<div class="watcheddesc"><%=repo.repodb.desc%></div>
-				<div class="watcheddesc">Owner: <%=link_to repo.repodb.user.username, :action=>'profile', :id => repo.repodb.user.id%></div>
+				<div class="watcheddesc">Owner: <%=link_to repo.repodb.user.username, :action=>'profile', :username => repo.repodb.user.username%></div>
 				<div class="divide"><img src="/images/div.jpg"/></div>
 
 				

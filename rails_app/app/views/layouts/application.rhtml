@@ -40,7 +40,7 @@
 				<%=nav_link('Home', 'user')%> | 
 				<%=nav_link('Repos', 'repo')%> | 
 				<%=nav_link('Logout', 'user', 'logout')%>
-				<div id="helloblock">Hello <%=name%></div>
+				<div id="helloblock">Hello <%=link_to(name, :controller => 'user', :action => 'profile', :username => @user.username)%></div>
 				<%else%>
 				<%=nav_link('Home', 'site')%> | 
 				<%=nav_link('Repos', 'repo')%> | 

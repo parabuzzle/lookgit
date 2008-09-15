@@ -1,10 +1,14 @@
+<% if @git.commits.first == nil %>
+	Instructions for bare Repo Goes Here
+<%else%>
+
 <% head = @git.commits.first%>
 <div class="rinfo">
 	
 	<div class="rnav">Branches | Commits | Tags</div>
 	<div class="rnav"><%= @git.tree.id%></div>
 	<div class="pad5"></div>
-	<div class="rname"><%=link_to user_lookup(@repo.user_id).username, :controller => 'user', :action => 'profile', :id => @repo.user_id%> / <%=@repo.name%>
+	<div class="rname"><%=link_to @repo.user.username, :controller => 'user', :action => 'profile', :username => @repo.user.username%> / <%=@repo.name%>
 	</div>
 	<div class="repodesc">Description: <%=@repo.desc%></div>
 	<div class="repodesc">Public Clone Url: <a href="#public" rel="facebox">https://url</a></div>
@@ -21,6 +25,8 @@
 </div>
 <div class="pad5"></div>
 
-<% for commit in @git.commits%>
-<%= commit %>
+<% for commit in @git.commits.first.tree.contents%>
+<div><%= commit.name %></div>
+<%end%>
+
 <%end%>
