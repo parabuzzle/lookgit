@@ -1,3 +1,26 @@
+<% head = @git.commits.first%>
+<div class="rinfo">
+	
+	<div class="rnav">Branches | Commits | Tags</div>
+	<div class="rnav"><%= @git.tree.id%></div>
+	<div class="pad5"></div>
+	<div class="rname"><%=link_to user_lookup(@repo.user_id).username, :controller => 'user', :action => 'profile', :id => @repo.user_id%> / <%=@repo.name%>
+	</div>
+	<div class="repodesc">Description: <%=@repo.desc%></div>
+	<div class="repodesc">Public Clone Url: <a href="#public" rel="facebox">https://url</a></div>
+	<div id="public" style="display:none;">Give this clone URL to anyone.<br /><b>git clone https://url</b></div>
+	<div class="repodesc">Your Clone Url: <a href="#private" rel="facebox">git@url</a></div>
+	<div id="private" style="display:none;">Use this clone URL yourself.<br /><b>git clone git@url</b></div>
+</div>
+
+<div class="pad5"></div>
+<div id="commits">
+	<div class="cmessage"><%= head.message %></div>
+	<div class="cauthor"><%= head.committer %></div>
+	<div class="cdate"><%= reldate(head.committed_date)%></div>
+</div>
+<div class="pad5"></div>
+
 <% for commit in @git.commits%>
 <%= commit %>
 <%end%>

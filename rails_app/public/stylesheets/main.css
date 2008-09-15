@@ -27,7 +27,10 @@ a:hover {
   text-decoration: underline;
   /*background: #000;*/
 }
- 
+
+.pad5 {
+	padding: 5px;
+}
  
 #content {
   width: 900px;

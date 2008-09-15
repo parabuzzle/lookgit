@@ -34,3 +34,29 @@
 	padding-left: 50px;
 	padding-right: 50px;
 }
+
+
+.rinfo {
+	background-color: #eee;
+	border: solid 1px #333;
+	padding: 15px;
+}
+
+#commits {
+	background-color: #dedaff;
+	border: solid 1px #333;
+	padding: 15px;
+}
+
+.cmessage {
+	font-size: 12px;
+}
+
+.cauthor {
+	font-size: 16px;
+}
+
+.cdate {
+	font-size: 12px;
+	color: #666;
+}

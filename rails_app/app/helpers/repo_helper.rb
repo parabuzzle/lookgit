@@ -1,7 +1,7 @@
 module RepoHelper
   
   def create_new_repo(repo)
-    mkdir = 'mkdir -p ' + repo
+    mkdir = 'mkdir -p ' + repo.downcase!
     init = 'cd ' + repo + ' && git init'
     logger.debug 'making repo - ' + mkdir
     system(mkdir)

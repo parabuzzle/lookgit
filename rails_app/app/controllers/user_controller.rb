@@ -36,6 +36,7 @@ class UserController < ApplicationController
       @user = User.new(params[:user])
       if @user[:password] == @user[:password_confirmation]
         if @user.save
+          @user.build_profile
           @user.login!(session)
           flash[:notice] = "User #{@user.username} Created!"
           redirect_to_forwarding_url
