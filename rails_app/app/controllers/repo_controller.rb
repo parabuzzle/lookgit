@@ -14,8 +14,10 @@ class RepoController < ApplicationController
   def show
     @additional_styles = 'repo'
     @repo = repo?
+    username = params[:username]
     @title = "#{SITE_PROPS['sitename']} :: #{@repo.name}"
-    @git = Repo.new(@repo.loc)
+    @repopath = full_repo_path(@repo.loc, username)
+    @git = Repo.new(@repopath)
   end
   
   def new
@@ -25,13 +27,14 @@ class RepoController < ApplicationController
     if request.post?
       user = user?
       @repo = user.repodbs.new(params[:repo])
-      @repo[:loc] = SITE_PROPS['repospath'] + user.username + '/' + @repo[:name] + '.git'
       @repo[:creator_id] = user.id
+      @repo[:unixname] = @repo[:name].downcase!
+      @repo[:loc] = @repo[:unixname] + '.git'
       if @repo.save
         flash[:notice] = "Repository #{@repo.name} Created!"
-        create_new_repo(@repo.loc)
+        create_new_repo(@repo.loc, user.username)
         #redirect_to :controller => 'user', :action => 'index'
-        redirect_to :controller => 'repo', :action => 'show', :id => @repo.id
+        redirect_to :controller => 'repo', :action => 'show', :username => user.username, :reponame => @repo.unixname
       end
     end
     

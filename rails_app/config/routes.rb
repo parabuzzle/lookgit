@@ -3,6 +3,7 @@ ActionController::Routing::Routes.draw do |map|
   map.root :controller => "site"
   map.connect 'repositories', :controller => 'repo', :action => 'index'
   map.connect 'repo/:id/tree/:sha', :controller => 'repo', :action => 'tree'
+  map.connect 'repo/:username/:reponame', :controller => 'repo', :action => 'show'
   map.resources :repo
   map.connect ':controller/:action/:id'
   map.connect ':controller/:action/:id.:format'

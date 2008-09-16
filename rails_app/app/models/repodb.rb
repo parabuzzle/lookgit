@@ -18,7 +18,7 @@ class Repodb < ActiveRecord::Base
   PASSWORD_SIZE = 30
   EMAIL_SIZE =30
 
-  validates_uniqueness_of :name
+  #validates_uniqueness_of :name
   validates_length_of :name, :within => NAME_RANGE
 
   validates_format_of :name,

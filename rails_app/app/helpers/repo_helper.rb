@@ -1,7 +1,8 @@
 module RepoHelper
   
-  def create_new_repo(repo)
-    mkdir = 'mkdir -p ' + repo.downcase!
+  def create_new_repo(loc, user)
+    repo = SITE_PROPS['repospath'] + '/' + user + '/' + loc
+    mkdir = 'mkdir -p ' + repo
     init = 'cd ' + repo + ' && git init'
     logger.debug 'making repo - ' + mkdir
     system(mkdir)

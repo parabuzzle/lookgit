@@ -4,7 +4,7 @@
 	
 	<% for repo in @repos%>
 	
-		<div class="reponame"><%= link_to(repo.name, :controller=>'repo', :action => 'show', :id => repo.id)%></div>
+		<div class="reponame"><%= link_to(repo.name, :controller=>'repo', :action => 'show', :username => repo.user.username, :reponame => repo.unixname)%></div>
 		<div class="repodesc">Description: <%= repo.desc%></div>
 		<div class="repoowner">Owner: <%=link_to repo.user.username, :controller => 'user', :action => 'profile', :username => repo.user.username%></div>
 		<div class="rnav">

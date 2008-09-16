@@ -19,7 +19,7 @@ module ApplicationHelper
     end
     
     def repo?
-      @repo = Repodb.find(params[:id])
+      @repo = Repodb.find_by_unixname_and_user_id(params[:reponame], User.find_by_username(params[:username]).id)
     end
     
     def watching_repo?(rid)
@@ -36,6 +36,10 @@ module ApplicationHelper
     
     def lead?
       user?.is_lead
+    end
+    
+    def full_repo_path(loc, user)
+      return SITE_PROPS['repospath'] + '/' + user + '/' + loc
     end
 
     # Return a link for use in layout navigation

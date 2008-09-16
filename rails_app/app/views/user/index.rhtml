@@ -25,7 +25,7 @@
 			<%=if @myrepos.empty? then "<div class='recent'>You don't have any repos yet</div>" end%>
 			
 			<% for repo in @myrepos%>
-				<div class="yrepo"><img src="/images/icons/happy.png" alt="you own it"/><%=if repo.is_private then "<img src='/images/icons/private.png' alt='private'/>" end%> <%= link_to(repo.name, :controller=>'repo', :action => 'show', :id => repo.id)%></div>
+				<div class="yrepo"><img src="/images/icons/happy.png" alt="you own it"/><%=if repo.is_private then "<img src='/images/icons/private.png' alt='private'/>" end%> <%= link_to(repo.name, :controller=>'repo', :action => 'show', :username => @user.username, :reponame => repo.unixname)%></div>
 				<div class="yrepodesc"><%=repo.desc%></div>
 				<div class="divide"><img src="/images/div.jpg" alt="---"/></div>
 			<% end %>

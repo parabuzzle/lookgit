@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(:version => 20080914171104) do
 
   create_table "repodbs", :force => true do |t|
     t.string   "name",                                    :null => false
+    t.string   "unixname",                                :null => false
     t.string   "loc",                                     :null => false
     t.integer  "creator_id",                              :null => false
     t.integer  "user_id"
@@ -53,14 +54,6 @@ ActiveRecord::Schema.define(:version => 20080914171104) do
     t.boolean  "requires_super_admin", :default => false
     t.boolean  "is_private",           :default => false
     t.boolean  "is_deleted",           :default => false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "repodbs_watchers", :force => true do |t|
-    t.integer  "user_id"
-    t.integer  "repodb_id"
-    t.integer  "watcher_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

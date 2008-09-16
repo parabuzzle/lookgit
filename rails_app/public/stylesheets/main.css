@@ -6,7 +6,7 @@ body {
   text-align: center;
   font-family: Helvetica, Arial, sans-serif;
   /* background: #ffffff url(../images/header.png) repeat-x; */
-  background: #608341;
+  background: #338833;
   color: #333;
   /* height: 100%; */
   margin-bottom:10px;
@@ -44,7 +44,7 @@ a:hover {
 
 #header {
 	padding-top: 15px;
-	color: #ffff00;
+	color: #eeee00;
 	font-size: 50px;
 	height: 70px;
 }
