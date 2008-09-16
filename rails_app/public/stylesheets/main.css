@@ -6,7 +6,7 @@ body {
   text-align: center;
   font-family: Helvetica, Arial, sans-serif;
   /* background: #ffffff url(../images/header.png) repeat-x; */
-  background: #338833;
+  background: #576700;
   color: #333;
   /* height: 100%; */
   margin-bottom:10px;
@@ -28,6 +28,22 @@ a:hover {
   /*background: #000;*/
 }
 
+#headback {
+	position: absolute;
+	height: 150px;
+	width: 100%;
+	background-color: #292929;
+	border-bottom: 2px solid #111;
+}
+
+#header {
+	padding-top: 15px;
+	color: #fff;
+	font-size: 50px;
+	height: 70px;
+	font-family: Georgia, Arial, sans-serif;
+}
+
 .pad5 {
 	padding: 5px;
 }
@@ -42,12 +58,6 @@ a:hover {
   /* overflow: hidden; not sure we need this -- it messed up #anchor links */
 }
 
-#header {
-	padding-top: 15px;
-	color: #eeee00;
-	font-size: 50px;
-	height: 70px;
-}
 
 #tagline {
 	font-size: 14px;

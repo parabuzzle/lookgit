@@ -16,8 +16,9 @@
   </head>
   
   <body>
-	
+	<div id="headback">
 	<div id="content">
+		
 		<% if SITE_PROPS['logourl'] != nil %>
 			<div id="header"><img src="<%=SITE_PROPS["logourl"]%>" alt="<%=SITE_PROPS["sitename"]%>" border="0px"/></div>
 		<%else%>
@@ -94,6 +95,7 @@
         <%= debug(request) %>
       </fieldset>
     </div>
+</div>
     <!-- end Dev mode only stuff -->
     <% end %>
   </body>
