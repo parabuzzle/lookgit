@@ -28,7 +28,7 @@ class RepoController < ApplicationController
       user = user?
       @repo = user.repodbs.new(params[:repo])
       @repo[:creator_id] = user.id
-      @repo[:unixname] = @repo[:name].downcase!
+      @repo[:unixname] = @repo[:name].downcase
       @repo[:loc] = @repo[:unixname] + '.git'
       if @repo.save
         flash[:notice] = "Repository #{@repo.name} Created!"
