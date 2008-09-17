@@ -10,6 +10,12 @@ module RepoHelper
     system(init)
   end
   
+  def get_tree_by_name(repo, name)
+    r = repo.tree
+    return r./(name)
+  end
+
+  
   def watch_a_repo(repo_id)
      watch = user?.watchers.new(:repodb_id => repo_id)
      if watch.save
@@ -29,3 +35,12 @@ module RepoHelper
   end
   
 end
+
+class Array
+  
+  def names
+    self.collect {|x| x = x.name }
+  end
+  
+end
+  

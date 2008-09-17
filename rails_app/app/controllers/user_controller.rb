@@ -106,7 +106,7 @@ class UserController < ApplicationController
       session[:protected_page] = nil
       redirect_to redirect_url
     else
-      redirect_to :action => "index"
+      redirect_to :controller => 'user', :action => 'index'
     end
   end
   

@@ -2,17 +2,22 @@ ActionController::Routing::Routes.draw do |map|
   # The priority is based upon order of creation: first created -> highest priority.
   map.root :controller => "site"
   map.connect 'repositories', :controller => 'repo', :action => 'index'
-  map.connect 'repo/:id/tree/:sha', :controller => 'repo', :action => 'tree'
   map.connect 'user', :controller => 'user', :action => 'index'
+  map.connect 'logout', :controller => 'user', :action => 'logout'
+  map.connect 'login', :controller => 'user', :action => 'login'
+  map.connect 'register', :controller => 'user', :action => 'register'
   map.connect ':username', :controller => 'user', :action => 'profile'
   map.connect ':username/:reponame', :controller => 'repo', :action => 'show'
+  map.connect ':username/:reponame/:type/:branch' , :controller => 'repo' , :action => 'show'
+  map.connect ':username/:reponame/:type/:branch/*path' , :controller => 'repo' , :action => 'show'
+  map.connect ':username/:reponame/:type', :controller => 'repo', :action => 'show', :branch => 'master'
   
   #map.connect 'repo/:username/:reponame', :controller => 'repo', :action => 'show'
   map.resources :repo
   map.connect ':controller/:action/:id'
   map.connect ':controller/:action/:id.:format'
-  map.connect 'user/:action', :controller => 'user'
   map.connect 'profile/:username', :controller => 'user', :action => 'profile'
+  
   #map.connect 'user/:id', :controller => 'user', :action => 'show'
   #map.resources :repo
   # Sample of regular route:

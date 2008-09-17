@@ -17,6 +17,7 @@ class User < ActiveRecord::Base
     EMAIL_MAX_LENGTH = 50
     USERNAME_RANGE = USERNAME_MIN_LENGTH..USERNAME_MAX_LENGTH
     PASSWORD_RANGE = PASSWORD_MIN_LENGTH..PASSWORD_MAX_LENGTH
+    DISALLOWED_USERNAMES = 'user repo repository creator mine profile perforce'
 
     #Text field constraints
     USERNAME_SIZE = 30
@@ -39,6 +40,19 @@ class User < ActiveRecord::Base
 
 
     
+    def validate
+      for name in DISALLOWED_USERNAMES.split(" ")
+        if self[:username] == name
+          valid = false
+          break
+        end
+      end
+      if
+        valid == false
+        errors.add_to_base "That username is disallowed... sorry."
+      end
+    end
+
      #log a user in
     def login!(session)
       session[:user_id] = self.id

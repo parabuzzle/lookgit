@@ -10,3 +10,9 @@ tagline: Your friendly git server
 copyright: Copyright &copy; 2008 Your Company
 
 repospath: '/Users/heijmans/repos/'
+
+gituser: git
+
+publicurl: git://lookgit.org
+
+privatehost: lookgit.org

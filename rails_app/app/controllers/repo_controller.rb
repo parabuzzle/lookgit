@@ -12,12 +12,16 @@ class RepoController < ApplicationController
   end
   
   def show
+    if params[:branch] == nil then redirect_to :action => 'show', :type => 'tree', :branch => 'master' end
     @additional_styles = 'repo'
     @repo = repo?
     username = params[:username]
     @title = "#{SITE_PROPS['sitename']} :: #{@repo.name}"
     @repopath = full_repo_path(@repo.loc, username)
     @git = Repo.new(@repopath)
+    @privateurl = SITE_PROPS["gituser"] + '@' + SITE_PROPS["privatehost"] + ':' + @repo.user.username + '/' + @repo.unixname
+    @publicurl = SITE_PROPS["publicurl"] + '/' + @repo.user.username + '/' + @repo.unixname
+    
   end
   
   def new

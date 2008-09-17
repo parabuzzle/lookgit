@@ -11,10 +11,14 @@
 	<div class="rname"><%=link_to @repo.user.username, :controller => 'user', :action => 'profile', :username => @repo.user.username%> / <%=@repo.name%>
 	</div>
 	<div class="repodesc">Description: <%=@repo.desc%></div>
-	<div class="repodesc">Public Clone Url: <a href="#public" rel="facebox">https://url</a></div>
-	<div id="public" style="display:none;">Give this clone URL to anyone.<br /><b>git clone https://url</b></div>
-	<div class="repodesc">Your Clone Url: <a href="#private" rel="facebox">git@url</a></div>
-	<div id="private" style="display:none;">Use this clone URL yourself.<br /><b>git clone git@url</b></div>
+	<div class="repodesc">Public Clone Url: <a href="#public" rel="facebox"><%=@publicurl%></a></div>
+	<div id="public" style="display:none;">Give this clone URL to anyone.<br /><br/><b>git clone <%=@publicurl%></b></div>
+	<% if logged_in?%>
+	<%if @repo.user.id == user?.id %>
+	<div class="repodesc">Your Clone Url: <a href="#private" rel="facebox"><%=@privateurl%></a></div>
+	<div id="private" style="display:none;">Use this clone URL yourself.<br /><br/><b>git clone <%=@privateurl%></b></div>
+	<%end%>
+	<%end%>
 </div>
 
 <div class="pad5"></div>
@@ -24,9 +28,10 @@
 	<div class="cdate"><%= reldate(head.committed_date)%></div>
 </div>
 <div class="pad5"></div>
-
-<% for commit in @git.commits.first.tree.contents%>
-<div><%= commit.name %></div>
+<% repo = @git.tree("#{params[:branch]}")%>
+<% if @path != nil then tree = repo./'rails_app'  else tree = repo end%>
+<% for commit in tree.contents%>
+<div><%= link_to commit.name, :type => 'tree', :path => commit.name %></div>
 <%end%>
 
 <%end%>
