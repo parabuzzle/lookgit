@@ -58,6 +58,14 @@ ActiveRecord::Schema.define(:version => 20080914171104) do
     t.datetime "updated_at"
   end
 
+  create_table "repodbs_watchers", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "repodb_id"
+    t.integer  "watcher_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "users", :force => true do |t|
     t.string   "username",                                 :null => false
     t.string   "password",                                 :null => false

@@ -2,6 +2,7 @@ ActionController::Routing::Routes.draw do |map|
   # The priority is based upon order of creation: first created -> highest priority.
   map.root :controller => "site"
   map.connect 'repositories', :controller => 'repo', :action => 'index'
+  map.connect 'add', :controller => 'repo', :action => 'new'
   map.connect 'user', :controller => 'user', :action => 'index'
   map.connect 'logout', :controller => 'user', :action => 'logout'
   map.connect 'login', :controller => 'user', :action => 'login'

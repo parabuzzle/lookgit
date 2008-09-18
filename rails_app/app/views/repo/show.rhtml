@@ -1,12 +1,36 @@
 <% if @git.commits.first == nil %>
-	Instructions for bare Repo Goes Here
+	<div id="commits">
+		<div class="rname">New Repo? Here is what you do:</div>
+		<div class="repodesc">
+			<ul>
+				<li>mkdir <%=params[:reponame]%></li>
+				<li>cd <%=params[:reponame]%></li>
+				<li>git init</li>
+				<li>touch README</li>
+				<li>git add README</li>
+				<li>git commit -m 'init commit'</li>
+				<li>git remote add origin <%=@privateurl%></li>
+				<li>git push origin master</li>
+			</ul>
+		</div>
+		<div class="rname">Existing Git Repo?</div>
+		<div class="repodesc">
+			<ul>	
+				<li>cd to existing repo directory</li>
+				<li>git remote add origin <%=@privateurl%></li>
+				<li>git push origin master</li>
+			</ul>
+		</div>
+	</div>
+	
+
 <%else%>
 
 <% head = @git.commits.first%>
 <div class="rinfo">
 	
 	<div class="rnav">Branches | Commits | Tags</div>
-	<div class="rnav"><%= @git.tree.id%></div>
+	<div class="rnav"><%= @branch.id%></div>
 	<div class="pad5"></div>
 	<div class="rname"><%=link_to @repo.user.username, :controller => 'user', :action => 'profile', :username => @repo.user.username%> / <%=@repo.name%>
 	</div>
@@ -28,10 +52,14 @@
 	<div class="cdate"><%= reldate(head.committed_date)%></div>
 </div>
 <div class="pad5"></div>
-<% repo = @git.tree("#{params[:branch]}")%>
-<% if @path != nil then tree = repo./'rails_app'  else tree = repo end%>
-<% for commit in tree.contents%>
-<div><%= link_to commit.name, :type => 'tree', :path => commit.name %></div>
+<% repo = @tree%>
+
+<% for commit in repo.contents%>
+<% basepath = []%>
+<% basepath << @path%>
+<div><%= link_to commit.name, :type => 'tree', :path => basepath << commit.name %></div>
+<%basepath = nil%>
+
 <%end%>
 
 <%end%>

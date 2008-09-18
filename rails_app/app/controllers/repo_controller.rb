@@ -19,8 +19,16 @@ class RepoController < ApplicationController
     @title = "#{SITE_PROPS['sitename']} :: #{@repo.name}"
     @repopath = full_repo_path(@repo.loc, username)
     @git = Repo.new(@repopath)
-    @privateurl = SITE_PROPS["gituser"] + '@' + SITE_PROPS["privatehost"] + ':' + @repo.user.username + '/' + @repo.unixname
-    @publicurl = SITE_PROPS["publicurl"] + '/' + @repo.user.username + '/' + @repo.unixname
+    @privateurl = SITE_PROPS["gituser"] + '@' + SITE_PROPS["privatehost"] + ':' + @repo.user.username + '/' + @repo.unixname + '.git'
+    @publicurl = SITE_PROPS["publicurl"] + '/' + @repo.user.username + '/' + @repo.unixname + '.git'
+    @branch = @git.tree(params[:branch])
+    @path = params[:path]
+    @path.each do |traverse|
+      t = @branch
+      t = t./traverse
+      @t = t
+    end
+    @tree = if @path != nil then @t else @branch end
     
   end
   
