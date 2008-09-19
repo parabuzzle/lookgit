@@ -23,12 +23,7 @@ class RepoController < ApplicationController
     @publicurl = SITE_PROPS["publicurl"] + '/' + @repo.user.username + '/' + @repo.unixname + '.git'
     @branch = @git.tree(params[:branch])
     @path = params[:path]
-    @path.each do |traverse|
-      t = @branch
-      t = t./traverse
-      @t = t
-    end
-    @tree = if @path != nil then @t else @branch end
+    @tree = traverse(@branch, @path)
     
   end
   

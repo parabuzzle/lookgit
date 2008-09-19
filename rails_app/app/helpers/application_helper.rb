@@ -41,6 +41,15 @@ module ApplicationHelper
     def full_repo_path(loc, user)
       return SITE_PROPS['repospath'] + '/' + user + '/' + loc
     end
+    
+    def traverse(branch, path)
+      #num = path.length
+      b = branch.clone
+      path.each do |t|
+        b = b./t
+      end
+      return b
+    end
 
     # Return a link for use in layout navigation
     def nav_link(text, controller, action="index", rel=false)
