@@ -23,9 +23,13 @@ class RepoController < ApplicationController
     @publicurl = SITE_PROPS["publicurl"] + '/' + @repo.user.username + '/' + @repo.unixname + '.git'
     @branch = @git.tree(params[:branch])
     @path = params[:path]
-    @tree = traverse(@branch, @path)
-    
+    if @path != nil
+      @tree = traverse(@branch, @path)
+    else
+      @tree = @branch
+    end
   end
+  
   
   def new
     @additional_styles = 'repo'

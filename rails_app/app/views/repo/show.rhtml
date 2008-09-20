@@ -26,7 +26,7 @@
 
 <%else%>
 
-<% head = @git.commits.first%>
+<% head = @git.commits(@branch.id).first%>
 <div class="rinfo">
 	
 	<div class="rnav">Branches | Commits | Tags</div>
@@ -55,10 +55,10 @@
 <% repo = @tree%>
 
 <% for commit in repo.contents%>
-<% basepath = []%>
-<% basepath << @path%>
-<div><%= link_to commit.name, :type => 'tree', :path => basepath << commit.name %></div>
-<%basepath = nil%>
+<% if commit.type == Grit::Tree ? type = 'dir' : type = 'file'%>
+<div class="treeitem"><img src="/images/icons/<%=type%>.png" alt="<%=type%>"/> <a href="<%= build_uri(@path, commit.name)%>"><%=commit.name%></a></div>
+
+<%end%>
 
 <%end%>
 

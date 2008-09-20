@@ -43,12 +43,22 @@ module ApplicationHelper
     end
     
     def traverse(branch, path)
-      #num = path.length
       b = branch.clone
       path.each do |t|
         b = b./t
       end
       return b
+    end
+    
+    def build_uri(path, glob)
+      if path != nil
+        basepath = path.clone
+        uri = URI.unescape(url_for( :type => 'tree', :path => basepath << glob))
+        basepath = nil
+      else
+        uri = URI.unescape(url_for( :type => 'tree', :path => glob))
+      end
+      return uri
     end
 
     # Return a link for use in layout navigation
