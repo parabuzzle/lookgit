@@ -54,12 +54,17 @@
 <div class="pad5"></div>
 <% repo = @tree%>
 
-<% for commit in repo.contents%>
-<% if commit.type == Grit::Tree ? type = 'dir' : type = 'file'%>
-<div class="treeitem"><img src="/images/icons/<%=type%>.png" alt="<%=type%>"/> <a href="<%= build_uri(@path, commit.name)%>"><%=commit.name%></a></div>
+	<%if repo.class == Grit::Blob%>
+		<% file_text = '[code lang="ruby"]' + repo.data + '[/code]'%>
+		<% formatted_text = Syntaxi.new(file_text).process%>
+		<div id="file"><%= formatted_text%></div>
 
-<%end%>
+	<%else%>
+		<% for commit in repo.contents%>
+			<% if commit.class == Grit::Tree ? type = 'dir' : type = 'file'%>
+				<div class="treeitem"><img src="/images/icons/<%=type%>.png" alt="<%=type%>"/> <a href="<%= build_uri(@path, commit.name)%>"><%=commit.name%></a></div>
+			<%end%>
 
-<%end%>
-
+		<%end%>
+	<%end%>
 <%end%>

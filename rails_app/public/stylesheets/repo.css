@@ -60,3 +60,42 @@
 	font-size: 12px;
 	color: #666;
 }
+
+code {
+  font-family: Monaco, monospace;
+  font-size: 13px; }
+  code.line_number {
+    margin-left: 4px; }
+
+div#file {
+  margin: 5px;
+  border: solid 1px #000;
+  padding: 10px;
+  background-color: #201d1d; }
+  div#file span.comment {
+    color: #1a5adf;
+    font-style: italic; }
+  div#file span.punct {
+    color: #2ce429; }
+  div#file span.string {
+    color: #009b13; }
+  div#file span.ident {
+    color: #bcae9e; }
+  div#file span.constant {
+    color: #5d5cf3; }
+  div#file span.number {
+    color: #43aa46; }
+  div#file span.keyword {
+    color: #49a8eb;
+    font-style: bold; }
+  div#file span.symbol {
+    color: #c4656c;
+    font-style: bold; }
+  div#file span.attribute {
+    color: #348494;
+    font-style: bold; }
+  div#file span.method {
+    color: #fd935c; }
+  div#file span.class {
+    color: #bcae9e;
+    text-decoration: underline; }

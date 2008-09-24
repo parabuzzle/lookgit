@@ -50,13 +50,13 @@ module ApplicationHelper
       return b
     end
     
-    def build_uri(path, glob)
+    def build_uri(path, glob, type = 'tree')
       if path != nil
         basepath = path.clone
-        uri = URI.unescape(url_for( :type => 'tree', :path => basepath << glob))
+        uri = URI.unescape(url_for( :type => type, :path => basepath << glob))
         basepath = nil
       else
-        uri = URI.unescape(url_for( :type => 'tree', :path => glob))
+        uri = URI.unescape(url_for( :type => type, :path => glob))
       end
       return uri
     end
