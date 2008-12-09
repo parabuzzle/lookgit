@@ -56,9 +56,8 @@
 <% repo = @tree%>
 
 	<%if repo.class == Grit::Blob%>
-		<% file_text = get_lang(repo.name) + repo.data + '[/code]'%>
-		<% formatted_text = Syntaxi.new(file_text).process%>
-		<div id="file"><%= formatted_text%></div>
+		<% file_text = syntaxi_lang(repo.name) + repo.data + '[/code]'%>
+		<div id="file"><%= format_text(file_text)%></div>
 
 	<%else%>
 		<% for commit in repo.contents%>

@@ -5,7 +5,7 @@ class CreateProfiles < ActiveRecord::Migration
       t.column :about, :text
       t.column :homephone, :string
       t.column :workphone, :string
-      t.column :cellphone, :scring
+      t.column :cellphone, :string
       t.column :address, :string
       t.column :address2, :string
       t.column :city, :string

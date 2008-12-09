@@ -14,3 +14,15 @@ RAILS VERSION
 The Rails version is in early stages of development and is far more feature rich. The app designed for medium to large dev teams
 and supports multiple levels of authentication and repository moderation. Repositories can be public or private and can be hosted
 on a public internet server without threat to your private repositories.
+
+
+GETTING STARTED
+Copy config/database-example.yml to config/database.yml
+Edit config/database.yml
+
+Copy config/siteprops-example.yml to config/siteprops.yml
+Edit config/siteprops.yml
+
+Run rake db:migrate to create your database
+
+Start the app script/server

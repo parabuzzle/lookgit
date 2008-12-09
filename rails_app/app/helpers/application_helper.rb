@@ -50,6 +50,11 @@ module ApplicationHelper
       return b
     end
     
+    def format_text(file_text)
+      text = Syntaxi.new(file_text).process
+      return text
+    end
+    
     def build_crumb(path, branch)
       basepath = Array.new
       url = nil

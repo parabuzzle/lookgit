@@ -15,7 +15,7 @@ module RepoHelper
     return r./(name)
   end
   
-  def get_lang(filename)
+  def syntaxi_lang(filename)
     filetype = filename.split( '.' )
     if filetype.last == "rb"
       lang = "ruby"
