@@ -50,12 +50,13 @@
 	<div class="cmessage"><%= head.message %></div>
 	<div class="cauthor"><%= head.committer %></div>
 	<div class="cdate"><%= reldate(head.committed_date)%></div>
+	<div class="crumb"><%= build_crumb(@path) %></div>
 </div>
 <div class="pad5"></div>
 <% repo = @tree%>
 
 	<%if repo.class == Grit::Blob%>
-		<% file_text = '[code lang="ruby"]' + repo.data + '[/code]'%>
+		<% file_text = get_lang(repo.name) + repo.data + '[/code]'%>
 		<% formatted_text = Syntaxi.new(file_text).process%>
 		<div id="file"><%= formatted_text%></div>
 

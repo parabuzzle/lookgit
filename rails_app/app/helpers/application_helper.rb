@@ -50,6 +50,17 @@ module ApplicationHelper
       return b
     end
     
+    def build_crumb(path, type = 'tree')
+      if path != nil
+        basepath = path.clone
+        uri = URI.unescape(url_for( :type => type, :path => basepath ))
+        basepath = nil
+      else
+        uri = URI.unescape(url_for( :type => type, :path => basepath))
+      end
+      return uri
+    end
+    
     def build_uri(path, glob, type = 'tree')
       if path != nil
         basepath = path.clone

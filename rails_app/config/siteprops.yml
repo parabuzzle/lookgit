@@ -1,5 +1,5 @@
 #Your Site name.. You can put html in here to use a logo image
-sitename: Y! LookGit
+sitename: LookGit
 
 logourl:
 
@@ -9,7 +9,7 @@ tagline: Your friendly git server
 #The copyright info for your git repos
 copyright: Copyright &copy; 2008 Your Company
 
-repospath: '/Users/heijmans/repos/'
+repospath: '/Users/mike/repos/'
 
 gituser: git
 

@@ -14,6 +14,20 @@ module RepoHelper
     r = repo.tree
     return r./(name)
   end
+  
+  def get_lang(filename)
+    filetype = filename.split( '.' )
+    if filetype.last == "rb"
+      lang = "ruby"
+    end 
+    if filetype.last == "java"
+      lang = "java"
+    end
+    if lang.nil?
+      lang = "all"
+    end
+    return "[code lang='#{lang}']"
+  end
 
   
   def watch_a_repo(repo_id)
