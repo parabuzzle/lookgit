@@ -50,15 +50,29 @@ module ApplicationHelper
       return b
     end
     
-    def build_crumb(path, type = 'tree')
+    def build_crumb(path, branch)
+      basepath = Array.new
+      url = nil
       if path != nil
-        basepath = path.clone
-        uri = URI.unescape(url_for( :type => type, :path => basepath ))
-        basepath = nil
+        path.each do |p|
+          if basepath.empty?
+            basepath = p + "/"
+            uri = URI.unescape(url_for( :path => basepath))
+          else
+            basepath << p + "/"
+            uri = URI.unescape(url_for(:path => basepath))
+          end
+          
+          if url == nil
+            url = "<a href='#{url_for(:branch => branch)}'>#{branch}</a> / <a href='#{uri}'>#{p}</a>"
+          else
+            url = "#{url} / <a href='#{uri}'>#{p}</a>"
+          end
+        end
       else
-        uri = URI.unescape(url_for( :type => type, :path => basepath))
+       url = "<a href='#{url_for(:branch => branch)}'>#{branch}</a>"
       end
-      return uri
+      return url
     end
     
     def build_uri(path, glob, type = 'tree')
