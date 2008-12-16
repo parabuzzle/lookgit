@@ -16,7 +16,17 @@ and supports multiple levels of authentication and repository moderation. Reposi
 on a public internet server without threat to your private repositories.
 
 
-GETTING STARTED
+GETTING STARTED - Rails
+
+Requirements:
+Rails 2.1.0
+
+GEMS: 
+open4
+grit
+syntaxi
+
+
 Copy config/database-example.yml to config/database.yml
 Edit config/database.yml
 

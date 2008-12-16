@@ -1,6 +1,7 @@
-#Your Site name.. You can put html in here to use a logo image
+#Your Site name (This is used for the title of pages and anywhere else a text version of your site name is required)
 sitename: LookGit
 
+#This is the url that your logo is located (If ommited the sitename is used)
 logourl:
 
 #The tag line under your logo
@@ -9,10 +10,14 @@ tagline: Your friendly git server
 #The copyright info for your git repos
 copyright: Copyright &copy; 2008 Your Company
 
-repospath: '/Users/mike/repos/'
+#This is the directory where git repos are created (Must be writable by the user that runs the server)
+repospath: '/home/git/repos'
 
+#This is the user that will run the git server and that you have given the lookgit_login script
 gituser: git
 
+#The urel where public clones can be pulled from (uses the git-server provided by git)
 publicurl: git://lookgit.org
 
+#This is the hostname that the ssh connections for the gituser are established
 privatehost: lookgit.org
