@@ -67,6 +67,11 @@
   	font-size: 15px;
 }
 
+.right {
+	float: right;
+	text-align: right;
+}
+
 code {
   font-family: Monaco, monospace;
   font-size: 10px; }

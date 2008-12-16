@@ -11,6 +11,8 @@ ActionController::Routing::Routes.draw do |map|
   map.connect ':username/:reponame', :controller => 'repo', :action => 'show'
   map.connect ':username/:reponame/watch', :controller => 'repo', :action => 'watch'
   map.connect ':username/:reponame/unwatch', :controller => 'repo', :action => 'unwatch'
+  map.connect ':username/:reponame/commits/:branch/*path', :controller => 'repo', :action => 'commits'
+  map.connect ':username/:reponame/tags/:branch/*path', :controller => 'repo', :action => 'tags'
   map.connect ':username/:reponame/:type/:branch' , :controller => 'repo' , :action => 'show'
   map.connect ':username/:reponame/:type/:branch/*path' , :controller => 'repo' , :action => 'show'
   map.connect ':username/:reponame/:type', :controller => 'repo', :action => 'show', :branch => 'master'

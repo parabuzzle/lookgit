@@ -1,0 +1,49 @@
+<% head = @git.commits(@branch.id).first%>
+<div class="rinfo">
+	
+	<div class="rnav">
+	<%=link_to_unless_current('Branches', :controller => 'repo', :action => 'show', :type => 'tree', :reponame => params[:reponame], :username => params[:username], :branch => params[:branch])%>  | 
+	
+	<%=link_to_unless_current('Commits', :controller => 'repo', :action => 'commits', :reponame => params[:reponame], :username => params[:username], :branch => params[:branch])%> |
+	
+	 <%=link_to_unless_current('Tags', :controller => 'repo', :action => 'tags', :reponame => params[:reponame], :username => params[:username], :branch => params[:branch])%></div>
+	<div class="rnav"><%= @branch.id%></div>
+	<div class="pad5"></div>
+	<div class="rname"><%=link_to @repo.user.username, :controller => 'user', :action => 'profile', :username => @repo.user.username%> / <%= link_to @repo.name, :action => 'show', :branch => 'master', :type => 'tree'%>
+	</div>
+	<div class="repodesc">Description: <%=@repo.desc%></div>
+	<div class="repodesc">Public Clone Url: <a href="#public" rel="facebox"><%=@publicurl%></a></div>
+	<div id="public" style="display:none;">Give this clone URL to anyone.<br /><br/><b>git clone <%=@publicurl%></b></div>
+	<% if logged_in?%>
+	<%if @repo.user.id == user?.id %>
+	<div class="repodesc">Your Clone Url: <a href="#private" rel="facebox"><%=@privateurl%></a></div>
+	<div id="private" style="display:none;">Use this clone URL yourself.<br /><br/><b>git clone <%=@privateurl%></b></div>
+	<%end%>
+	<%end%>
+</div>
+<% for commit in @git.commits%>
+
+<div class="pad5"></div>
+<div id="commits">
+	<div class="right">
+		<div class="cdate">Tree : <%= link_to(commit.id, :type => 'tree', :branch => commit.id, :action => 'show')%></div>
+		<% for c in commit.parents %>
+		<div class="cdate">Parent : <%=link_to(c.id, :type => 'tree', :branch => c.id, :action => 'show')%>							
+		</div>
+		<%end%>	
+
+		<div class="cdate">View Diffs</div>
+	</div>
+	
+	<div class="cmessage"><%=commit.message %></div>
+	<div class="cauthor"><%= commit.committer %></div>
+	<div class="cdate"><%= reldate(commit.committed_date)%></div>
+<div class="clear" style="clear:right;"></div>
+</div>
+<%end%>
+<div class="pad5"></div>
+
+
+
+
+	
