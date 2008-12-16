@@ -37,7 +37,7 @@
 	 <%=link_to_unless_current('Tags', :controller => 'repo', :action => 'tags', :reponame => params[:reponame], :username => params[:username], :branch => params[:branch])%></div>
 	<div class="rnav"><%= @branch.id%></div>
 	<div class="pad5"></div>
-	<div class="rname"><%=link_to @repo.user.username, :controller => 'user', :action => 'profile', :username => @repo.user.username%> / <%=link_to @repo.name, :action => 'show', :branch => 'master', :type => 'tree'%>
+		<div class="rname"><%=link_to @repo.user.username, :controller => 'user', :action => 'profile', :username => @repo.user.username%> / <%=link_to @repo.name, :action => 'show', :branch => 'master', :type => 'tree'%>
 	</div>
 	<div class="repodesc">Description: <%=@repo.desc%></div>
 	<div class="repodesc">Public Clone Url: <a href="#public" rel="facebox"><%=@publicurl%></a></div>
@@ -68,8 +68,15 @@
 		<% for commit in repo.contents%>
 			<% if commit.class == Grit::Tree ? type = 'dir' : type = 'file'%>
 				<div class="treeitem"><img src="/images/icons/<%=type%>.png" alt="<%=type%>"/> <a href="<%= build_uri(@path, commit.name)%>"><%=commit.name%></a></div>
+				<%if commit.name.match(/readme/i) then readme = commit end%>
 			<%end%>
 
 		<%end%>
+	<%end%>
+	<% if readme != nil%>
+		<div id="file">
+			<% file_text = syntaxi_lang("ruby") + readme.data + '[/code]'%>
+			<%= format_text(file_text)%>
+		</div>
 	<%end%>
 <%end%>
