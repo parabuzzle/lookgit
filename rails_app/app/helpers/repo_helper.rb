@@ -31,6 +31,7 @@ module RepoHelper
 
   
   def watch_a_repo(repo_id)
+     
      watch = user?.watchers.new(:repodb_id => repo_id)
      if watch.save
        return true

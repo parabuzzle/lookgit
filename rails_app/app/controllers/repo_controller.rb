@@ -53,6 +53,7 @@ class RepoController < ApplicationController
   
   def watch
     if request.post?
+      @repo = repo?
       if watch_a_repo(params[:repo_id])
         flash[:notice]= "Repository added to your watch list"
         redirect_to :controller => 'user', :action => 'index'

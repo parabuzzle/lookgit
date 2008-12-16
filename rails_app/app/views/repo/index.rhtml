@@ -10,9 +10,9 @@
 		<div class="rnav">
 		<% if logged_in?%>
 			<% if watching_repo?(repo.id) != 0 %>
-				<%=link_to 'Un-Watch', {:action => "unwatch", :repo_id => repo.id}, :method => :post %>
+				<%=link_to 'Un-Watch', {:action => "unwatch", :reponame => repo.name, :username => repo.user.username, :repo_id => repo.id}, :method => :post %>
 			<%else%>
-				<%=link_to 'Watch', {:action => "watch", :repo_id => repo.id}, :method => :post %>
+				<%=link_to 'Watch', {:action => "watch", :reponame => repo.name, :username => repo.user.username, :repo_id => repo.id}, :method => :post %>
 			<%end%>
 		<%end%>
 		</div>
