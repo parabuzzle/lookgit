@@ -42,12 +42,11 @@
 			<%=if @watchedrepos.empty? then "<div class='recent'>Your are not watching any repos</div>" end%>
 			<% for repo in @watchedrepos%>
 				
-				<div class="watched"><%= link_to(repo.repodb.name, :controller=>'repo', :action => 'show', :id => repo.repodb.id)%> [<%=link_to 'Un-Watch', {:controller => 'repo', :action => "unwatch", :repo_id => repo.repodb.id}, :method => :post %>]</div>
+				<div class="watched"><%= link_to(repo.repodb.name, :controller=>'repo', :action => 'show', :username => repo.repodb.user.username, :reponame => repo.repodb.unixname)%> [<%=link_to 'Un-Watch', {:controller => 'repo', :action => "unwatch", :reponame => repo.repodb.name, :username => repo.repodb.user.username, :repo_id => repo.repodb.id}, :method => :post %>]</div>
 				<div class="watcheddesc"><%=repo.repodb.desc%></div>
 				<div class="watcheddesc">Owner: <%=link_to repo.repodb.user.username, :action=>'profile', :username => repo.repodb.user.username%></div>
 				<div class="divide"><img src="/images/div.jpg"/></div>
 
-				
 			<%end%>
 		</div>
 		<div id="pad5"></div>
