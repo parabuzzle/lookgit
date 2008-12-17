@@ -23,7 +23,7 @@ Rails 2.1.0
 
 GEMS: 
 open4
-grit
+mojombo-grit - DO NOT USE grit!
 syntaxi
 
 

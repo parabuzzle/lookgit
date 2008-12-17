@@ -33,7 +33,7 @@ Rails::Initializer.run do |config|
   # config.gem "aws-s3", :lib => "aws/s3"
    config.gem "open4"
    #config.gem "mime/types"
-   config.gem "grit"
+   config.gem 'mojombo-grit', :lib => 'grit'
    config.gem "syntaxi"
 
   # Only load the plugins named here, in the order given. By default, all plugins 
