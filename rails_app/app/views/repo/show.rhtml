@@ -31,18 +31,18 @@
 	
 	<div class="rnav">
 		<span class="branches">
-			<%=link_to_unless_current('Branches', :controller => 'repo', :action => 'show', :reponame => params[:reponame], :username => params[:username], :branch => params[:branch])%>
-			<div class="blist" style="position: absolute; margin-left: 0px; background: white; display: none; width: 150px;">
+			<%=link_to_unless_current('Branches', :controller => 'repo', :action => 'show', :type=> 'tree', :reponame => params[:reponame], :username => params[:username], :branch => params[:branch])%>
+			<div class="blist">
 			<%for branch in @git.branches%>
-				<div class='lists'><%=link_to(branch.name, :branch => branch.name)%></div>
+				<div class='lists'><%=link_to(branch.name, :branch => branch.name,:action => 'show', :type=> 'tree')%></div>
 			<%end%>
 			</div>
 		</span> | 
 		<span class="branches">
 			Tags
-			<div class="blist" style="position: absolute; margin-left: 60px; background: white; display: none; width: 150px;">
-			<%for branch in @git.tags%>
-				<div class='lists'><%= branch.name%> - tags</div>
+			<div class="blist" style="margin-left: 60px;">
+			<%for tag in @git.tags%>
+				<div class='lists'><%=link_to(tag.name, :branch => tag.name)%></div>
 			<%end%>
 			</div>
 		</span> | 
@@ -50,13 +50,6 @@
 	<%=link_to_unless_current('Commits', :controller => 'repo', :action => 'commits', :reponame => params[:reponame], :username => params[:username], :branch => params[:branch])%>
 	</div>
 	<div class="rnav"><%= @branch.id%></div>
-	<div id="categories-menu" class="hover-menu" style="position: relative">
-             <h2>Categories</h2>
-           </div>
- 
-
-
-		
 	<div class="pad5"></div>
 		<div class="rname"><%=link_to @repo.user.username, :controller => 'user', :action => 'profile', :username => @repo.user.username%> / <%=link_to @repo.name, :action => 'show', :branch => 'master', :type => 'tree'%>
 	</div>
