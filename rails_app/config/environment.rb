@@ -33,16 +33,16 @@ Rails::Initializer.run do |config|
   # config.gem "aws-s3", :lib => "aws/s3"
    config.gem "open4"
    #config.gem "mime/types"
-   config.gem 'mojombo-grit', :lib => 'grit'
+   #config.gem 'mojombo-grit', :lib => 'grit'
    config.gem "syntaxi"
 
   # Only load the plugins named here, in the order given. By default, all plugins 
   # in vendor/plugins are loaded in alphabetical order.
   # :all can be used as a placeholder for all plugins not explicitly named
-  # config.plugins = [ :exception_notification, :ssl_requirement, :all ]
+  # config.plugins = [ :all ]
 
   # Add additional load paths for your own custom dirs
-  # config.load_paths += %W( #{RAILS_ROOT}/thirdparty/lib )
+  config.load_paths += %W( #{RAILS_ROOT}/vendor/plugins/grit )
 
   # Force all environments to use the same logger level
   # (by default production uses :info, the others :debug)

@@ -11,6 +11,19 @@ class RepoController < ApplicationController
     @repos = Repodb.public?
   end
   
+  def diffs
+    @additional_styles = 'repo'
+    @repo = repo?
+    @title = "#{SITE_PROPS['sitename']} :: #{@repo.name} :: Diffs"
+    username = params[:username]
+    @repopath = full_repo_path(@repo.loc, username)
+    @git = Repo.new(@repopath)
+    @privateurl = SITE_PROPS["gituser"] + '@' + SITE_PROPS["privatehost"] + ':' + @repo.user.username + '/' + @repo.unixname + '.git'
+    @publicurl = SITE_PROPS["publicurl"] + '/' + @repo.user.username + '/' + @repo.unixname + '.git'
+    @commit = @git.commit(params[:branch])
+    diff_text = '[code lang="diff"]' + @git.diff(@commit.parents[0], @commit) + '[/code]'
+    @syntax = Syntaxi.new(diff_text).process
+  end
 
   
   def show

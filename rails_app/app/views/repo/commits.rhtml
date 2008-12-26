@@ -42,11 +42,13 @@
 	<div class="right">
 		<div class="cdate">Tree : <%= link_to(commit.id, :type => 'tree', :branch => commit.id, :action => 'show')%></div>
 		<% for c in commit.parents %>
-		<div class="cdate">Parent : <%=link_to(c.id, :type => 'tree', :branch => c.id, :action => 'show')%>							
+		<div class="cdate">Parent : <%=link_to(c.id, :branch => c.id, :action => 'diffs')%>							
 		</div>
 		<%end%>	
 
-		<div class="cdate">View Diffs</div>
+		<div class="cdate">
+			<%= link_to('Diffs', :type => 'diffs', :branch => commit.id, :action => 'show')%>
+		</div>
 	</div>
 	
 	<div class="cmessage"><%=commit.message %></div>
