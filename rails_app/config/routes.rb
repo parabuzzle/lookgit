@@ -8,7 +8,7 @@ ActionController::Routing::Routes.draw do |map|
   map.connect 'login', :controller => 'user', :action => 'login'
   map.connect 'register', :controller => 'user', :action => 'register'
   map.connect ':username', :controller => 'user', :action => 'profile'
-  map.connect ':username/:reponame', :controller => 'repo', :action => 'show'
+  map.connect ':username/:reponame', :controller => 'repo', :action => 'show', :type => 'tree', :branch => 'master'
   map.connect ':username/:reponame/watch', :controller => 'repo', :action => 'watch'
   map.connect ':username/:reponame/unwatch', :controller => 'repo', :action => 'unwatch'
   map.connect ':username/:reponame/commits/:branch/*path', :controller => 'repo', :action => 'commits'

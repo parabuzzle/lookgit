@@ -14,6 +14,8 @@ class RepoController < ApplicationController
 
   
   def show
+    #if params[:type] == nil then params[:type] = 'tree' end
+    #if params[:branch] == nil then params[:branch] = 'master' end
     if params[:branch] == nil then redirect_to :action => 'show', :type => 'tree', :branch => 'master' end
     @additional_styles = 'repo'
     @repo = repo?

@@ -30,32 +30,33 @@
 <div class="rinfo">
 	
 	<div class="rnav">
-	<%=link_to_unless_current('Branches', :controller => 'repo', :action => 'show', :type => 'tree', :reponame => params[:reponame], :username => params[:username], :branch => params[:branch])%>  | 
+		<span class="branches">
+			<%=link_to_unless_current('Branches', :controller => 'repo', :action => 'show', :reponame => params[:reponame], :username => params[:username], :branch => params[:branch])%>
+			<div class="blist" style="position: absolute; margin-left: 0px; background: white; display: none; width: 150px;">
+			<%for branch in @git.branches%>
+				<div class='lists'><%=link_to(branch.name, :branch => branch.name)%></div>
+			<%end%>
+			</div>
+		</span> | 
+		<span class="branches">
+			Tags
+			<div class="blist" style="position: absolute; margin-left: 60px; background: white; display: none; width: 150px;">
+			<%for branch in @git.tags%>
+				<div class='lists'><%= branch.name%> - tags</div>
+			<%end%>
+			</div>
+		</span> | 
 	
-	<%=link_to_unless_current('Commits', :controller => 'repo', :action => 'commits', :reponame => params[:reponame], :username => params[:username], :branch => params[:branch])%> |
-	
-	 <%=link_to_unless_current('Tags', :controller => 'repo', :action => 'tags', :reponame => params[:reponame], :username => params[:username], :branch => params[:branch])%>
-		<span id="taglist" style="font-size:12px;">
-			<ul>
-				<%for tag in @tags%>
-				<li><%=tag.id%></li>
-				<%end%>
-			</ul>
-		</span>
-	
+	<%=link_to_unless_current('Commits', :controller => 'repo', :action => 'commits', :reponame => params[:reponame], :username => params[:username], :branch => params[:branch])%>
 	</div>
-	
+	<div class="rnav"><%= @branch.id%></div>
+	<div id="categories-menu" class="hover-menu" style="position: relative">
+             <h2>Categories</h2>
+           </div>
+ 
 
-	
-	<div class="rnav">
-		<span id="taglist" style="font-size:12px;">
-			<ul>
-				<%for branch in @git.branches%>
-				<li><%=branch.name%></li>
-				<%end%>
-			</ul>
-		</span>
-	</div>
+
+		
 	<div class="pad5"></div>
 		<div class="rname"><%=link_to @repo.user.username, :controller => 'user', :action => 'profile', :username => @repo.user.username%> / <%=link_to @repo.name, :action => 'show', :branch => 'master', :type => 'tree'%>
 	</div>
