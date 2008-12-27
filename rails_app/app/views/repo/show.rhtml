@@ -68,7 +68,11 @@
 <div id="commits">
 	<div class="cmessage"><%= head.message %></div>
 	<div class="cauthor"><%= head.committer %></div>
-	<div class="cdate"><%= reldate(head.committed_date)%></div>
+	<div class="cdate"><%= reldate(head.committed_date)%>
+		<div class="popdate">
+			<div class='lists'><%=head.committed_date%></div>
+		</div>
+	</div>
 	<div class="crumb"><%= build_crumb(@path,@branch.id) %></div>
 </div>
 <div class="pad5"></div>

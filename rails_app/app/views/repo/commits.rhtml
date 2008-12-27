@@ -42,7 +42,7 @@
 	<div class="right">
 		<div class="cdate">Tree : <%= link_to(commit.id, :type => 'tree', :branch => commit.id, :action => 'show')%></div>
 		<% for c in commit.parents %>
-		<div class="cdate">Parent : <%=link_to(c.id, :branch => c.id, :action => 'diffs')%>							
+		<div class="cdate">Parent : <%=link_to(c.id, :branch => c.id, :action => 'show', :type => 'tree')%>							
 		</div>
 		<%end%>	
 

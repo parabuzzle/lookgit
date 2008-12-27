@@ -27,7 +27,7 @@ jQuery(document).ready(function() {
    });
 });
 
-function checkHover() {
+function checkHoverDate() {
    if (obj) {
       obj.find('.popdate').fadeOut('fast');
    } //if
@@ -44,7 +44,7 @@ jQuery(document).ready(function() {
    }, function() {
       obj = jQuery(this);
       setTimeout(
-         "checkHover()",
-         400);
+         "checkHoverDate()",
+         100);
    });
 });
