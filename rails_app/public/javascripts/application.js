@@ -26,3 +26,25 @@ jQuery(document).ready(function() {
          400);
    });
 });
+
+function checkHover() {
+   if (obj) {
+      obj.find('.popdate').fadeOut('fast');
+   } //if
+} //checkHover
+
+jQuery(document).ready(function() {
+   jQuery('.cdate').hover(function() {
+      if (obj) {
+         obj.find('.popdate').fadeOut('fast');
+         obj = null;
+      } //if
+
+      jQuery(this).find('.popdate').fadeIn('fast');
+   }, function() {
+      obj = jQuery(this);
+      setTimeout(
+         "checkHover()",
+         400);
+   });
+});

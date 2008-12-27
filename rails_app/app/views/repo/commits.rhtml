@@ -53,7 +53,11 @@
 	
 	<div class="cmessage"><%=commit.message %></div>
 	<div class="cauthor"><%= commit.committer %></div>
-	<div class="cdate"><%= reldate(commit.committed_date)%></div>
+	<div class="cdate"><%= reldate(commit.committed_date)%>
+		<div class="popdate">
+			<div class='lists'><%=commit.committed_date%></div>
+		</div>
+	</div>
 <div class="clear" style="clear:right;"></div>
 </div>
 <%end%>
