@@ -75,7 +75,7 @@ class RepoController < ApplicationController
         flash[:notice] = "Repository #{@repo.name} Created!"
         create_new_repo(@repo.loc, user.username)
         #redirect_to :controller => 'user', :action => 'index'
-        redirect_to :controller => 'repo', :action => 'show', :username => user.username, :reponame => @repo.unixname
+        redirect_to :controller => 'repo', :action => 'show', :username => user.username, :reponame => @repo.unixname, :type => 'tree', :branch => 'master'
       end
     end
     
